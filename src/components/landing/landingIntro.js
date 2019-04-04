@@ -1,16 +1,18 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import './landingIntro.css'
+import { Link } from 'react-router-dom';
+
+
+import './landingIntro.css';
 
 export default function LandingIntro(props) {
 
 
 
   return (
-    <div>
+    <div className="landingIntro">
       <h1>Learn To Dance</h1>
       <label>
-        <button>
+        <button className="introButton">
           <Link
             to="/login">
             Sign In
@@ -19,7 +21,7 @@ export default function LandingIntro(props) {
       </label>
 
       <label>
-        <button>
+        <button className="introButton">
             <Link 
               to="/enroll">
                 Enroll
