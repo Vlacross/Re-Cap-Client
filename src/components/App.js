@@ -5,6 +5,7 @@ import { Route, withRouter } from 'react-router-dom';
 import Dashboard from './dashboard/dashboard';
 import Header from './navBar/navBar';
 import LandingPage from './landing/landingPage';
+import OurStory from './about/ourStory';
 
 import './App.css';
 
@@ -24,7 +25,7 @@ console.log("app")
           {/* <Route exact path="/Login" component={Login} />
           <Route exact path="/enroll" component={EnrollForm} />
           <Route exact path="/offeredTypes" component={OfferedTypes} /> */}
-          {/* <Route exact path="/ourStory" component={OurStory} /> */}
+          <Route exact path="/ourStory" component={OurStory} />
         </div>
      
     );
