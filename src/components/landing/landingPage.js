@@ -9,7 +9,7 @@ import './landingPage.css';
 export default function LandingPage(props) {
 
   return (
-    <div>
+    <div className="landingPage">
       <LandingIntro />
       {/* <Route exact path="about-us" component={AboutUs} />
       <OfferedStyles /> */}
