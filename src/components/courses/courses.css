@@ -1,0 +1,20 @@
+.offeredTypes {
+  color: rgb(255, 255, 255);
+  height: 80vh;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.35)
+  ),
+  url("./images/dontz3.1.jpg"), center;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin: 10px;
+  border-radius: 8px;
+  padding: 40px;
+}
+
+ul {
+  list-style: none;
+}
+

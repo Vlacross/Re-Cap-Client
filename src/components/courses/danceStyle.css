@@ -1,0 +1,15 @@
+.styleListing {
+  border: solid 1px white;
+  margin: 8px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.5) 
+}
+
+.danceName {
+  margin: 0px;
+  
+
+}
+
