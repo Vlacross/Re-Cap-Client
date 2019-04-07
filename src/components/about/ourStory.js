@@ -17,7 +17,7 @@ import './ourStory.css';
 }
 
 const mapStateToProps = state => ({
-  bio: state.bio
+  bio: state.bio.bio
 })
 
 export default connect(mapStateToProps)(OurStory);
