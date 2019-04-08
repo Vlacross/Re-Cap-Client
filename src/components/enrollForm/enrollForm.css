@@ -1,0 +1,10 @@
+.enrollForm {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+input {
+  margin: 4px;
+}

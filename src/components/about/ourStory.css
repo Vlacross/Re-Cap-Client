@@ -7,9 +7,30 @@
   ),
   url("./images/dontz4.jpg"), center;
   background-repeat: no-repeat;
+  background-position: center;
   background-size: 100%;
   margin: 10px;
   border-radius: 8px;
   padding: 40px;
+  overflow-y: scroll;
 }
+h4 {
+  overflow-y: hidden;
+}
+
+
+@media only screen and (max-width: 1000px) {
+  .ourStory {
+      background-size: cover;
+
+      background-position: 45% 0px;
+      
+  }
+ 
+}
+/*
+ background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 100%;
+*/
 

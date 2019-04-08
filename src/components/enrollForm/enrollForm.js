@@ -1,8 +1,9 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import Input from '../input/input';
+import './enrollForm.css'
 
-export class LoginForm extends React.Component {
+export class EnrollForm extends React.Component {
 
     onSubmit(values) {
       console.log('valley', values)
@@ -19,25 +20,43 @@ export class LoginForm extends React.Component {
       
   return(
     <form
-      className="loginForm"
+      className="enrollForm"
       onSubmit={handleSubmit(this.onSubmit)}>
     {error}
+
+    <Field 
+      name="firstname"
+      type="text"
+      component={Input}
+      label="Firstname" />
+
+    <Field 
+      name="lastname"
+      type="text"
+      component={Input}
+      label="Lastname" />
     
     <Field 
       name="username"
       type="text"
       component={Input}
       label="Username" />
-
-
-    
+ 
     <Field 
       name="password"
       type="text"
       component={Input}
       label="Password" />
-      <button
-      type="submit"> Submit</button>
+      
+    <Field 
+      name="passwordCheck"
+      type="text"
+      component={Input}
+      label="Re-enter Password" />
+
+    <button
+      type="submit">
+       Submit</button>
 
     </form>
   )      
@@ -48,9 +67,9 @@ export class LoginForm extends React.Component {
 };
 
 export default reduxForm({
-  form: 'loginForm',
+  form: 'enrollForm',
   onSubmitFail: (errors) => console.log(errors)
-})(LoginForm)
+})(EnrollForm)
 
 
 
