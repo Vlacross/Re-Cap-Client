@@ -10,7 +10,8 @@ import courseReducer from './reducers/courses';
 const store = createStore(
  combineReducers({
      bio: staticReducer,
-   courses: courseReducer
+   courses: courseReducer,
+   form: formReducer
  })
   
   
