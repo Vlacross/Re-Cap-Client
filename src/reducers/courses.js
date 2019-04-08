@@ -19,7 +19,7 @@ export default function courseReducer(state = initialState, action) {
 };
 
 
-
+//** Will eventually want to write an action to call for fetching classes from DB*/
 
 
 

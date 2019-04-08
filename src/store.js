@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
+import { reducer as formReducer  } from 'redux-form';
 import rootReducer from './reducers';
 
 import { combineReducers } from 'redux';
