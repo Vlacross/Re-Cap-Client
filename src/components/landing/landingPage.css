@@ -7,7 +7,23 @@
   ),
   url("./images/dontz.jpg"), no-repeat center;
   background-size: 100%;
+  max-width: 700px;
   margin: 10px;
   border-radius: 8px;
   padding: 40px;
+  
 }
+
+div {
+  width: 80%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .landingPage {
+      background-size: cover;
+
+      background-position: 45% 0px;
+      
+  }
+}
+
