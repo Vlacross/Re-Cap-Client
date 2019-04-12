@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import { reducer as formReducer  } from 'redux-form';
+import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
 import { combineReducers } from 'redux';
@@ -12,8 +13,8 @@ const store = createStore(
      bio: staticReducer,
    courses: courseReducer,
    form: formReducer
- })
-  
+ }),
+  applyMiddleware(thunk)
   
 
 );
