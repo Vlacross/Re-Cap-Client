@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import { fetchCourseData, offeredCourses } from '../../actions';
 import './courses.css'
 
 import DanceStyle from './danceStyle';
@@ -8,12 +9,18 @@ import DanceStyle from './danceStyle';
 
 
 
-function OfferedTypes(props) { 
+export class OfferedTypes extends React.Component { 
 
-  console.log(props.courses)
+  componentDidMount() {
+    console.log('props from didMount ', this.props);
+    this.props.dispatch(fetchCourseData())
+
+  }
+
+ render() {
 
   const listings = 
-  props.courses.map((course, index) => {
+  this.props.courses.map((course, index) => {
     return(
     <DanceStyle key={index} style={course} />
     )
@@ -29,7 +36,8 @@ function OfferedTypes(props) {
 
     </div>
 );
-}
+
+}}
 
 
 
