@@ -23,6 +23,8 @@ export const fetchCoursesError = error => ({
 
 export const fetchCourseData = () => (dispatch, getState) => {
 
+  let wait = ms => new Promise(resolve => setTimeout(resolve, ms))
+
   dispatch(offeredCourses())
   console.log(`fetching from ${API_URI}courses`)
 

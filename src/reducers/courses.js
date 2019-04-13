@@ -15,10 +15,10 @@ let initialState = {
 
 export default function courseReducer(state = initialState, action) {
   if(action.type === OFFERED_COURSES) {
-    console.log('courses-Action-Triggered');
+    console.log('courses-Action-Triggered')
     return Object.assign({}, state, {
       loading: true,
-      error: false
+      error: null
     })
   }
   else if(action.type === FETCH_COURSES_SUCCESS) {
@@ -37,7 +37,7 @@ export default function courseReducer(state = initialState, action) {
       })
     
   }
-  console.log(state)
+  
   return state;
 };
 

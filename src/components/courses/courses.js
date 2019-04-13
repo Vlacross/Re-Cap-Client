@@ -14,6 +14,7 @@ export class OfferedTypes extends React.Component {
   componentDidMount() {
     console.log('props from didMount ', this.props);
     this.props.dispatch(fetchCourseData())
+    this.props.dispatch(offeredCourses())
 
   }
 
@@ -42,7 +43,9 @@ export class OfferedTypes extends React.Component {
 
 
 const mapStateToProps = state => ({
-  courses: state.courses.courses
+  state: state,
+  courses: state.courses.courses,
+  loading: state.courses.loading
 });
 
 export default connect(mapStateToProps)(OfferedTypes);
