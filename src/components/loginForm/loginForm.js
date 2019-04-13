@@ -1,11 +1,13 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import Input from '../input/input';
+import { authFetch } from '../../actions'
 
 export class LoginForm extends React.Component {
 
-    onSubmit(values) {
+    onSubmit(values, dispatch) {
       console.log('valley', values)
+      dispatch(authFetch(values))
       /*eventually write actions sending fetch requests with values */
     };
 
@@ -49,7 +51,7 @@ export class LoginForm extends React.Component {
 
 export default reduxForm({
   form: 'loginForm',
-  onSubmitFail: (errors) => console.log(errors)
+  onSubmitFail: (errors, dispatch) => console.log(errors)
 })(LoginForm)
 
 
