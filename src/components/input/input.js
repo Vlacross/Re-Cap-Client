@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import './input.css'
 
 export default class Input extends React.Component {
@@ -13,15 +14,25 @@ componentDidUpdate(prevProps) {
 }
 
   render() {
-
-    // const { input: { value, onChange } } = this.props;
-    const { input, type, label } = this.props
+    
+    const { input, type, label, name } = this.props;
+    
+    let error;
+    if (this.props.meta.touched && this.props.meta.error) {
+       error = <div className="inputError">{this.props.meta.error}</div>;
+    }
+  
+    
+    
 
     return (
       <div className="formInput">
-        <label htmlFor={label}>
+        <label htmlFor={name}>
           {label}
         </label>
+
+        {error}  
+        
         <input
            {...input}
            id={input.name}
@@ -29,9 +40,11 @@ componentDidUpdate(prevProps) {
            ref={input => (this.input = input)}
             />
       </div>
-    )
+    );
   }
 }
 
 
-
+/*
+example from docs for inserting meta-touched and meta-error
+https://redux-form.com/7.2.2/docs/migrationguide.md/ */
