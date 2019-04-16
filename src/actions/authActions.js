@@ -1,5 +1,5 @@
 import { API_URI } from '../config';
-import { normalizeResponse } from './utils' 
+import { normalizeResponse, distinguishAuthFormat } from './utils' 
 
 export const LOGIN_REQUEST_LOADING = 'LOGIN_REQUEST_LOADING';
 export const loginRequestLoading = () => ({
@@ -22,23 +22,26 @@ export const loginRequestFailure = error => ({
 
 
 export const authFetch = (values) => (dispatch) => {
-let { username, password } = values;
+
+  let credentials = distinguishAuthFormat(values)
+  let { load, route } = credentials
+
+  console.log(credentials)
+
  const options = {
   method: 'post',
-headers: {
+  headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json'
   },
-body: JSON.stringify({
-"username": username,
-"password": password})
-
+  body: JSON.stringify(load)
 }
 
   dispatch(loginRequestLoading())
-  console.log(`fetching from ${API_URI}login/newUser`)
+  console.log(`fetching from ${API_URI}login${route}`)
 
-  return fetch(`${API_URI}login/newUser`, options)
+   
+  return fetch(`${API_URI}login${route}`, options)
   .then(res => normalizeResponse(res))
   .then(user => {
     console.log('busey wasnt murdered!', user)

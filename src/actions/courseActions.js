@@ -40,16 +40,3 @@ export const fetchCourseData = () => (dispatch, getState) => {
   })
 };
 
-// export function fetchCourseData() {
-//   return dispatch => {
-//     return fetch(`${API_URI}courses`)
-//   .then(res => normalizeResponse(res))
-//   .then(data => {
-//     dispatch(fetchCoursesSuccess(data))
-//   })
-//   .catch(error => {
-//     console.log('errerr', error)
-//     dispatch(fetchCoursesError(error))
-//   })
-//   }
-// }
