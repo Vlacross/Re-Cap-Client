@@ -36,7 +36,7 @@ export default function authReducer(state = initialState, action) {
     })
 
   }
-console.log('auth', Date.now(), state)
+// console.log('auth', Date.now(), state)
 return state
 };
 
