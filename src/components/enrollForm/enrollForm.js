@@ -1,12 +1,18 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import Input from '../input/input';
+import { authFetch } from '../../actions'
+import { required, notEmpty, trimmed, lengthMax, lengthMin, matches, isLower, validEmailFormat } from '../../validators';
 import './enrollForm.css'
+
+
 
 export class EnrollForm extends React.Component {
 
-    onSubmit(values) {
+    onSubmit(values, dispatch) {
+     
       console.log('valley', values)
+      dispatch(authFetch(values))
       /*eventually write actions sending fetch requests with values */
     };
 
@@ -16,6 +22,10 @@ export class EnrollForm extends React.Component {
     
       
       const { error, handleSubmit, pristine, reset, submitting } = this.props
+
+    if(this.props.error) {
+      error = <div className="formError">{this.props.error}</div>
+    }
       
       
   return(
@@ -28,34 +38,47 @@ export class EnrollForm extends React.Component {
       name="firstname"
       type="text"
       component={Input}
-      label="Firstname" />
+      label="Firstname" 
+      validate={[required, notEmpty, trimmed, lengthMin(1), lengthMax(24)]} />
 
     <Field 
       name="lastname"
       type="text"
       component={Input}
-      label="Lastname" />
+      label="Lastname"
+      validate={[required, notEmpty, trimmed, lengthMin(1), lengthMax(24)]} />
+
+    <Field 
+      name="email"
+      type="text"
+      component={Input}
+      label="E-mail"
+      validate={[required, notEmpty, trimmed, isLower, validEmailFormat]} />
     
     <Field 
       name="username"
       type="text"
       component={Input}
-      label="Username" />
+      label="Username"
+      validate={[required, notEmpty, trimmed, lengthMin(6), lengthMax(14), isLower]} />
  
     <Field 
       name="password"
       type="text"
       component={Input}
-      label="Password" />
+      label="Password"
+      validate={[required, notEmpty, trimmed, lengthMin(6), lengthMax(14), isLower]} />
       
     <Field 
       name="passwordCheck"
       type="text"
       component={Input}
-      label="Re-enter Password" />
+      label="Re-enter Password"
+      validate={[required, notEmpty, trimmed, lengthMin(6), lengthMax(14), isLower, matches('password')]} />
 
     <button
-      type="submit">
+      type="submit"
+      disabled={pristine || submitting}>
        Submit</button>
 
     </form>
@@ -68,9 +91,10 @@ export class EnrollForm extends React.Component {
 
 export default reduxForm({
   form: 'enrollForm',
-  onSubmitFail: (errors) => console.log(errors)
+  onSubmitFail: (errors, dispatch) => console.log(errors)
 })(EnrollForm)
 
 
+// dispatch(focus('enroll', Object.keys(errors[0])))
 
 /*https://reactjs.org/docs/react-component.html#componentdidupdate -  */

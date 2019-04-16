@@ -1,23 +1,34 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, focus } from 'redux-form';
 import Input from '../input/input';
 import { authFetch } from '../../actions'
+import { required, notEmpty, trimmed, lengthMax, lengthMin } from '../../validators';
+
+import './loginForm.css'
+
+let minLength = lengthMin(6);
+let maxLength = lengthMax(11);
 
 export class LoginForm extends React.Component {
 
     onSubmit(values, dispatch) {
       console.log('valley', values)
       dispatch(authFetch(values))
-      /*eventually write actions sending fetch requests with values */
-    };
+    }
 
-
-    render() {
+   
 
     
-      
-      const { error, handleSubmit, pristine, reset, submitting } = this.props
-      
+  render() {
+
+      const {  handleSubmit, pristine, reset, submitting } = this.props
+
+    
+    
+      let error
+      if(this.props.error) {
+        error = <div className="formError">{this.props.error}</div>
+  }
       
   return(
     <form
@@ -29,7 +40,8 @@ export class LoginForm extends React.Component {
       name="username"
       type="text"
       component={Input}
-      label="Username" />
+      label="Username" 
+      validate={[required, notEmpty, trimmed, minLength, maxLength]} />
 
 
     
@@ -37,7 +49,9 @@ export class LoginForm extends React.Component {
       name="password"
       type="text"
       component={Input}
-      label="Password" />
+      label="Password"
+      validate={[required, notEmpty, trimmed, minLength, maxLength]} />
+
       <button
       type="submit"> Submit</button>
 
@@ -51,7 +65,7 @@ export class LoginForm extends React.Component {
 
 export default reduxForm({
   form: 'loginForm',
-  onSubmitFail: (errors, dispatch) => console.log(errors)
+  onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
 })(LoginForm)
 
 
