@@ -1,4 +1,5 @@
 export const normalizeResponse = res => {
+  
   if(!res.ok) {
     if(
       res.headers.has('content-type') && 
@@ -7,6 +8,7 @@ export const normalizeResponse = res => {
       
        return res.json().then(err => Promise.reject(err)) 
       }
+      
       return Promise.reject({
         code: res.status,
         message: res.statusText

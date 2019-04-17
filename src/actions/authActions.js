@@ -1,3 +1,4 @@
+import jwtDecode from 'jwt-decode';
 import { API_URI } from '../config';
 import { normalizeResponse, distinguishAuthFormat } from './utils' 
 
@@ -43,12 +44,26 @@ export const authFetch = (values) => (dispatch) => {
    
   return fetch(`${API_URI}login${route}`, options)
   .then(res => normalizeResponse(res))
-  .then(user => {
-    console.log('busey wasnt murdered!', user)
-    dispatch(loginRequestSuccess(user))
+  .then(payload => {
+    console.log(payload)
+    if(payload.errmsg) { return Promise.reject(payload) } 
+    dispatch(loginRequestSuccess(payload.token))
+    // console.log('busey wasnt murdered!', jwtDecode(payload.token.token))
   })
   .catch(error => {
-    dispatch(loginRequestFailure(error))
+    console.log(error)
+    let msg;
+    switch(error.code) {
+      case 401:
+        msg = 'Login error! Check username and password and try again!';
+        break;
+      case 11000:
+        msg = 'Username already in use, pick something else';
+        break;
+      default:
+        msg = 'Something went wrong, try again!';
+    }
+    dispatch(loginRequestFailure(msg))
   })
 }
 
