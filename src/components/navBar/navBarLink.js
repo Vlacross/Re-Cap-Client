@@ -9,10 +9,8 @@ export default function navBarLink(props) {
 
   return (
     <Link 
-    to={path}>
-      <button className="navBarLink">
-        {name}
-      </button>
+      to={path}>
+      {name}
     </Link>
 
   );
