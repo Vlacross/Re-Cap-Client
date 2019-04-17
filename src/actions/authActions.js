@@ -1,6 +1,18 @@
 import jwtDecode from 'jwt-decode';
 import { API_URI } from '../config';
+import { loadToken, storeToken, removeToken } from '../localStorage';
 import { normalizeResponse, distinguishAuthFormat } from './utils' 
+
+export const SET_TOKEN = 'SET_TOKEN';
+export const setToken = token => ({
+  type: SET_TOKEN,
+  token
+});
+
+export const CLEAR_AUTH = 'CLEAR_AUTH';
+export const clearAuth = () => ({
+  type: CLEAR_AUTH
+});
 
 export const LOGIN_REQUEST_LOADING = 'LOGIN_REQUEST_LOADING';
 export const loginRequestLoading = () => ({
@@ -22,12 +34,21 @@ export const loginRequestFailure = error => ({
 });
 
 
+const storeAuth = (token, dispatch) => {
+  const decodedToken = jwtDecode(token);
+  console.log('storing-34', decodedToken)
+  dispatch(setToken(token))
+  dispatch(loginRequestSuccess(decodedToken.user))
+  storeToken(token)
+};
+
+
 export const authFetch = (values) => (dispatch) => {
 
   let credentials = distinguishAuthFormat(values)
   let { load, route } = credentials
 
-  console.log(credentials)
+  console.log('creds-46', credentials)
 
  const options = {
   method: 'post',
@@ -39,16 +60,15 @@ export const authFetch = (values) => (dispatch) => {
 }
 
   dispatch(loginRequestLoading())
-  console.log(`fetching from ${API_URI}login${route}`)
+  console.log(`fetching from ${API_URI}login${route}--58`)
 
    
   return fetch(`${API_URI}login${route}`, options)
   .then(res => normalizeResponse(res))
   .then(payload => {
-    console.log(payload)
+    console.log('postFetch -64', payload)
     if(payload.errmsg) { return Promise.reject(payload) } 
-    dispatch(loginRequestSuccess(payload.token))
-    // console.log('busey wasnt murdered!', jwtDecode(payload.token.token))
+    storeAuth(payload, dispatch)
   })
   .catch(error => {
     console.log(error)
