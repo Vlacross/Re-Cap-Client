@@ -1,17 +1,20 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
+import { connect } from 'react-redux';
 import Input from '../input/input';
 import { authFetch } from '../../actions'
 import { required, notEmpty, trimmed, lengthMax, lengthMin } from '../../validators';
 
 import './loginForm.css'
 
-let minLength = lengthMin(6);
+let minLength = lengthMin(4);
 let maxLength = lengthMax(11);
 
 export class LoginForm extends React.Component {
+  
 
     onSubmit(values, dispatch) {
+      // console.log(this.props)
       console.log('valley', values)
       dispatch(authFetch(values))
     }
@@ -63,10 +66,28 @@ export class LoginForm extends React.Component {
 
 };
 
-export default reduxForm({
+
+
+ LoginForm = connect(
+  state => ({
+    state: state,
+    initialValues: state.auth.user,
+    error: state.auth.error
+  }))(LoginForm)
+
+
+
+export default  LoginForm = reduxForm({
   form: 'loginForm',
   onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
 })(LoginForm)
+
+
+
+// export default reduxForm({
+//   form: 'loginForm',
+//   onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
+// })(LoginForm)
 
 
 
