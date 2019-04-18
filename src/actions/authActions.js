@@ -1,11 +1,13 @@
 import jwtDecode from 'jwt-decode';
 import { API_URI } from '../config';
 import { loadToken, storeToken, removeToken } from '../localStorage';
-import { normalizeResponse, distinguishAuthFormat } from './utils' 
+import { normalizeResponse, distinguishAuthFormat } from './utils' ;
+
 
 export const SET_TOKEN = 'SET_TOKEN';
-export const setToken = token => ({
+export const setToken = (token, user) => ({
   type: SET_TOKEN,
+  user,
   token
 });
 
@@ -21,9 +23,8 @@ export const loginRequestLoading = () => ({
 
 
 export const LOGIN_REQUEST_SUCCESS = 'LOGIN_REQUEST_SUCCESS';
-export const loginRequestSuccess = user => ({
-  type: LOGIN_REQUEST_SUCCESS,
-  user: user
+export const loginRequestSuccess = () => ({
+  type: LOGIN_REQUEST_SUCCESS
 });
 
 
@@ -36,9 +37,9 @@ export const loginRequestFailure = error => ({
 
 const storeAuth = (token, dispatch) => {
   const decodedToken = jwtDecode(token);
-  console.log('storing-34', decodedToken)
-  dispatch(setToken(token))
-  dispatch(loginRequestSuccess(decodedToken.user))
+  console.log('storing-39', decodedToken)
+  dispatch(setToken(token, decodedToken.user))
+  dispatch(loginRequestSuccess())
   storeToken(token)
 };
 
@@ -48,7 +49,7 @@ export const authFetch = (values) => (dispatch) => {
   let credentials = distinguishAuthFormat(values)
   let { load, route } = credentials
 
-  console.log('creds-46', credentials)
+  console.log('creds-51', credentials)
 
  const options = {
   method: 'post',
@@ -60,15 +61,15 @@ export const authFetch = (values) => (dispatch) => {
 }
 
   dispatch(loginRequestLoading())
-  console.log(`fetching from ${API_URI}login${route}--58`)
+  console.log(`fetching from ${API_URI}login${route}--63`)
 
    
   return fetch(`${API_URI}login${route}`, options)
   .then(res => normalizeResponse(res))
-  .then(payload => {
-    console.log('postFetch -64', payload)
-    if(payload.errmsg) { return Promise.reject(payload) } 
-    storeAuth(payload, dispatch)
+  .then(token => {
+    console.log('postFetch -64', token)
+    if(token.errmsg) { return Promise.reject(token) } 
+    storeAuth(token, dispatch)
   })
   .catch(error => {
     console.log(error)

@@ -18,9 +18,10 @@ export default function authReducer(state = initialState, action) {
     })
 
   }
-  else if (action.typ === SET_TOKEN) {
-    console.log('StoringTokenToState')
+  else if (action.type === SET_TOKEN) {
+    console.log('StoringTokenToState', action.token)
     return Object.assign({}, state, {
+      user: action.user,
       token: action.token
     })
   }
@@ -34,7 +35,6 @@ export default function authReducer(state = initialState, action) {
   else if(action.type === LOGIN_REQUEST_SUCCESS) {
     console.log('loginRequestSucces fired')
     return Object.assign({}, state, {
-      user: action.user,
       loading: false
     })
 

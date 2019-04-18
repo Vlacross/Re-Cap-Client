@@ -1,9 +1,11 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { reducer as formReducer  } from 'redux-form';
 import thunk from 'redux-thunk';
-import reducer from './reducers';
+import jwtDecode from 'jwt-decode';
 
-import { combineReducers } from 'redux';
+import { loadToken } from './localStorage';
+import { setToken } from './actions/authActions';
+
 import  staticReducer  from './reducers/staticReducer';
 import courseReducer from './reducers/courses';
 import authReducer from './reducers/auth';
@@ -18,7 +20,19 @@ const store = createStore(
  }),
   applyMiddleware(thunk)
   
-
 );
-console.log('store', store.getState())
+
+const authToken = loadToken();
+const user = !authToken ? null : jwtDecode(authToken).user
+
+if(authToken) {
+  store.dispatch(setToken(authToken, user))
+  // Use the right action to add the token
+  // to the Store.
+}
+
+
+
+// console.log('tokentokentoken', loadToken())
+
 export default store;
