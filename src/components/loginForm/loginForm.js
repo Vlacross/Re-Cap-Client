@@ -1,9 +1,12 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import Input from '../input/input';
 import { authFetch } from '../../actions'
 import { required, notEmpty, trimmed, lengthMax, lengthMin } from '../../validators';
+import dashboardRedirect from '../checkAuth/dashboardRedirect';
+
 
 import './loginForm.css'
 
@@ -12,6 +15,13 @@ let maxLength = lengthMax(11);
 
 export class LoginForm extends React.Component {
   
+  // componentDidUpdate() {
+  //   console.log(this.props.loggedIn)
+  //   if(this.props.loggedIn) {
+  //     console.log('this.props.loggedIn')
+  //     return <Redirect to="/dashboard" />
+  //   }
+  // }
 
     onSubmit(values, dispatch) {
       // console.log(this.props)
@@ -71,24 +81,21 @@ export class LoginForm extends React.Component {
  LoginForm = connect(
   state => ({
     state: state,
+    loggedIn: state.auth.user !== null,
     initialValues: state.auth.user,
     error: state.auth.error
   }))(LoginForm)
 
 
 
-export default  LoginForm = reduxForm({
+ LoginForm = reduxForm({
   form: 'loginForm',
   onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
 })(LoginForm)
 
+export default dashboardRedirect()(LoginForm)
 
-
-// export default reduxForm({
-//   form: 'loginForm',
-//   onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
-// })(LoginForm)
-
+// export default checkAuth()(LoginForm)
 
 
 /*https://reactjs.org/docs/react-component.html#componentdidupdate -  */

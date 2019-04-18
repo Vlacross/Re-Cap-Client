@@ -4,12 +4,15 @@ import { connect } from 'react-redux';
 import Input from '../input/input';
 import { authFetch } from '../../actions'
 import { required, notEmpty, trimmed, lengthMax, lengthMin, matches, isLower, validEmailFormat } from '../../validators';
+import dashboardRedirect from '../checkAuth/dashboardRedirect';
+
 import './enrollForm.css'
 
 let minLength = lengthMin(6);
 let maxLength = lengthMax(14);
 let nameMinLength =  lengthMin(2);
 let nameMaxLength = lengthMax(24);
+let passMatch = matches('password')
 
 
 
@@ -85,7 +88,7 @@ export class EnrollForm extends React.Component {
       type="text"
       component={Input}
       label="Re-enter Password"
-      // validate={[required, notEmpty, trimmed,  minLength, maxLength, isLower, matches('password')]} 
+      validate={[required, notEmpty, trimmed,  minLength, maxLength, isLower, passMatch]} 
       />
 
    <div>
@@ -113,12 +116,12 @@ EnrollForm = connect(
 
 
 
-export default  EnrollForm = reduxForm({
+EnrollForm = reduxForm({
   form: 'enrollForm',
   onSubmitFail: (errors, dispatch) => dispatch(focus('enroll', 'username'))
 })(EnrollForm)
 
-
+export default  dashboardRedirect()(EnrollForm)
 
 
 
