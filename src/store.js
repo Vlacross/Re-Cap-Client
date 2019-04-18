@@ -11,14 +11,19 @@ import courseReducer from './reducers/courses';
 import authReducer from './reducers/auth';
 
 
+
+
+
+
 const store = createStore(
- combineReducers({
-     bio: staticReducer,
-   courses: courseReducer,
-   auth: authReducer,
-   form: formReducer
- }),
+  combineReducers({
+  bio: staticReducer,
+courses: courseReducer,
+auth: authReducer,
+form: formReducer
+}),
   applyMiddleware(thunk)
+    
   
 );
 
@@ -27,12 +32,9 @@ const user = !authToken ? null : jwtDecode(authToken).user
 
 if(authToken) {
   store.dispatch(setToken(authToken, user))
-  // Use the right action to add the token
-  // to the Store.
+
 }
 
 
-
-// console.log('tokentokentoken', loadToken())
 
 export default store;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
+
 import Input from '../input/input';
 import { authFetch } from '../../actions'
 import { required, notEmpty, trimmed, lengthMax, lengthMin } from '../../validators';
@@ -15,24 +16,14 @@ let maxLength = lengthMax(11);
 
 export class LoginForm extends React.Component {
   
-  // componentDidUpdate() {
-  //   console.log(this.props.loggedIn)
-  //   if(this.props.loggedIn) {
-  //     console.log('this.props.loggedIn')
-  //     return <Redirect to="/dashboard" />
-  //   }
-  // }
 
     onSubmit(values, dispatch) {
-      // console.log(this.props)
-      console.log('valley', values)
       dispatch(authFetch(values))
-    }
-
-   
+    };
 
     
   render() {
+      
 
       const {  handleSubmit, pristine, reset, submitting } = this.props
 
@@ -68,6 +59,8 @@ export class LoginForm extends React.Component {
       <button
       type="submit"> Submit</button>
 
+     
+
     </form>
   )      
       
@@ -76,24 +69,25 @@ export class LoginForm extends React.Component {
 
 };
 
-
-
- LoginForm = connect(
-  state => ({
-    state: state,
-    loggedIn: state.auth.user !== null,
-    initialValues: state.auth.user,
-    error: state.auth.error
-  }))(LoginForm)
-
-
-
  LoginForm = reduxForm({
-  form: 'loginForm',
-  onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
-})(LoginForm)
+    form: 'loginForm',
+    onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
+  })(LoginForm)
+  
+  
+  LoginForm = connect(
+    state => ({
+      state: state,
+      loggedIn: state.auth.user !== null,
+      initialValues: state.auth.user,
+      error: state.auth.error
+    }))(LoginForm)
+    
+    LoginForm = dashboardRedirect()(LoginForm);
+  
+ 
 
-export default dashboardRedirect()(LoginForm)
+export default LoginForm
 
 // export default checkAuth()(LoginForm)
 

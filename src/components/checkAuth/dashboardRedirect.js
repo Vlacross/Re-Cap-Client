@@ -9,18 +9,17 @@ export default () => Component => {
   function routeToDashboard(props) {
     console.log(props)
 
-    const showLoad = <div>Loading...</div>;
     const { loggedIn, loading, error, ...passThroughProps } = props;
 
     if(loading) {
-      return {showLoad}
+
+      return <div>Loading...</div>
     } 
     else if (!loggedIn || error) {
-      console.log(error, loggedIn)
-      return <Component />
+
+      return <Component {...passThroughProps} />
       
     }
-    console.log('movingToWrappedComponent')
     return <Redirect to="/dashboard" />
 
   };

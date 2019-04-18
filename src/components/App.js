@@ -20,7 +20,7 @@ class App extends Component {
   
 
   render() {
-console.log("app", this.props.loggedIn)
+console.log("app", this.props)
     return (
 
       
