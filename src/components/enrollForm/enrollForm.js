@@ -30,9 +30,9 @@ export class EnrollForm extends React.Component {
 
     console.log(this.props)
       
-      const { error, handleSubmit, pristine, reset, submitting } = this.props
+      let { error, handleSubmit, pristine, submitting } = this.props
 
-    if(this.props.error) {
+    if(error) {
       error = <div className="formError">{this.props.error}</div>
     }
       

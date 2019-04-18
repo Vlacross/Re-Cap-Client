@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import { API_URI } from '../config';
-import { loadToken, storeToken, removeToken } from '../localStorage';
+import { storeToken } from '../localStorage';
 import { normalizeResponse, distinguishAuthFormat } from './utils' ;
 
 
@@ -36,6 +36,7 @@ export const loginRequestFailure = error => ({
 
 
 const storeAuth = (token, dispatch) => {
+  
   const decodedToken = jwtDecode(token);
   console.log('storing-39', decodedToken)
   dispatch(setToken(token, decodedToken.user))

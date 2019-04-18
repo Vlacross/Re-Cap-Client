@@ -23,19 +23,15 @@ export const fetchCoursesError = error => ({
 
 export const fetchCourseData = () => (dispatch, getState) => {
 
-  let wait = ms => new Promise(resolve => setTimeout(resolve, ms))
-
   dispatch(offeredCourses())
-  console.log(`fetching from ${API_URI}courses`)
+  console.log(`fetching courses`)
 
   return fetch(`${API_URI}courses`)
   .then(res => normalizeResponse(res))
   .then(data => {
-    console.log('data', data)
     dispatch(fetchCoursesSuccess(data))
   })
   .catch(error => {
-    console.log('errerr', error)
     dispatch(fetchCoursesError(error))
   })
 };
