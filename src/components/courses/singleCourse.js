@@ -17,7 +17,7 @@ let accepting = course.accepting ? "is" : "is not"
      
     <div>
     <div>
-      <h1 className="danceStyle">Dance Style:{course.style}</h1>
+      <h1 className="danceStyleSingle">Dance Style:{course.style}</h1>
     </div>
     <div>
       <span className="danceTeacher">Teacher: {course.teacher}</span>
@@ -39,8 +39,11 @@ let accepting = course.accepting ? "is" : "is not"
     </div>
     <p className="danceDescription">{course.description}</p>
     </div>
-    <button onClick={() => onClick(SIGNUP, course.id)}>signUp</button>
-    <button onClick={() => onClick(BACK, course.id)}>back</button>
+    <div className="buttonDiv">
+      <button onClick={() => onClick(SIGNUP, course.id)}>signUp</button>
+      <button onClick={() => onClick(BACK, course.id)}>back</button>
+    </div>
+    
 
     </div>
 );

@@ -42,7 +42,8 @@ export default function courseReducer(state = initialState, action) {
   else if(action.type === SET_DISPLAY_VIEW) {
     console.log('switching course display')
     return Object.assign({}, state, {
-      course: action.data
+      course: action.data,
+      loading: false
     })
   }
   

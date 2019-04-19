@@ -27,6 +27,11 @@ export const setDisplayView = data => ({
   data
 })
 
+// export const SIGNUP = 'SIGNUP';
+// export const signUp = () => ({
+
+// })
+
 export const fetchCourseData = () => (dispatch, getState) => {
 
   dispatch(offeredCourses())
@@ -56,3 +61,9 @@ export const getCourseInfo = (id) => (dispatch) => {
 
 }
 
+export const signUp = (id) => (dispatch) => {
+
+  // dispatch(offeredCourses())
+  console.log('inACtions with id = ', id)
+
+}

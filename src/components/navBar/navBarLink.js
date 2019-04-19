@@ -4,13 +4,15 @@ import './navBarLink.css';
 
 export default function navBarLink(props) {
 
-  const { path, name } = props;
+  const { path, name, onClick } = props;
 
 
   return (
     <Link 
-      to={path}>
+      to={path}
+      onClick={() => onClick()}>
       {name}
+      
     </Link>
 
   );

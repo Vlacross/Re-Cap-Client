@@ -17,8 +17,17 @@
 
 
 .logoutButton {
-  color: rgb(90, 30, 35);
-  cursor: pointer;
+  background:none!important;
+  color:rgb(91, 42, 131);
+  border:none; 
+  padding:0!important;
+  font: inherit;
+  /* display: inline-flex;
+  align-items: flex-start; */
   text-decoration: underline;
+  cursor: pointer;
   }
 
+
+
+  

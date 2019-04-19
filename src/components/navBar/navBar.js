@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { clearAuth } from '../../actions/authActions';
+import { setDisplayView } from '../../actions/courseActions';
 import { removeToken } from '../../localStorage';
 
 import NavBarLink from './navBarLink'
@@ -16,7 +17,17 @@ class HeaderNav extends React.Component {
    removeToken()
  }
 
+ setCourseListView() {
+  this.props.dispatch(setDisplayView(null))
+ }
+
   render() {
+
+
+    let dashboard = {
+      name: "Home",
+      path: "/dashboard"
+    }
 
     let ourStory = {
       name: "Our Story",
@@ -38,29 +49,33 @@ class HeaderNav extends React.Component {
       path: "/enroll"
     }
 
+    let home;
     let logout;
     let signIn;
     let signup;
+    
 
     
       if(!this.props.loggedIn) {
         console.log('loggedIn')
         signIn = <NavBarLink name={login.name} path={login.path} />
         signup = <NavBarLink name={enroll.name} path={enroll.path} />
-             
-            
+        
+        
         
       }
       if(this.props.loggedIn) {
         console.log('NOTTYNOTTYNOTTYloggedIn')
-          logout = <a className="logoutButton" onClick={() => this.logOut()}>LogOut</a>
+        home = <NavBarLink name={dashboard.name} path={dashboard.path} />
+        logout = <button className="logoutButton" href="" onClick={() => this.logOut()}>LogOut</button>
       }
     
 
     return (
       <div className="Navbar">
+          {home}
           <NavBarLink name={ourStory.name} path={ourStory.path} />
-          <NavBarLink name={offeredTypes.name} path={offeredTypes.path} />
+          <NavBarLink name={offeredTypes.name} path={offeredTypes.path} onClick={() => this.setCourseListView()} />
           {signIn}
           {signup}
           {logout}

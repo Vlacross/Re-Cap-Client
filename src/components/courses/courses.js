@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchCourseData, offeredCourses, setDisplayView, getCourseInfo } from '../../actions';
+import { fetchCourseData, offeredCourses, setDisplayView, getCourseInfo, signUp } from '../../actions';
 import './courses.css'
 
 import SingleCourse from './singleCourse';
@@ -27,9 +27,8 @@ export class OfferedTypes extends React.Component {
 
   handleClick(type, id) {
     type === 'signUp' ?
-    console.log('signUp', id) :
-    console.log('back')
-    this.props.dispatch(setDisplayView(null))
+    this.props.dispatch(signUp(id)) 
+    : this.props.dispatch(setDisplayView(null))
   }
 
  render() {

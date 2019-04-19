@@ -7,6 +7,10 @@ import './danceStyle.css'
 function DanceStyle({ course, onClick }) {
 
 /*use less course details here */
+let handleClick = (e, id) => {
+e.preventDefault();
+onClick(id)
+}
 
 let accepting = course.accepting ? "is" : "is not"
 
@@ -14,7 +18,7 @@ let accepting = course.accepting ? "is" : "is not"
   <li  className="styleListing">
     <div>
     <div>
-      <a className="danceStyle">Class: {course.style}</a>
+      <button onClick={(e) => handleClick(e, course.id)} className="danceStyle">Class: {course.style}</button>
     </div>
     <div>
       <span className="danceTeacher">Teacher: {course.teacher}</span>
@@ -24,7 +28,7 @@ let accepting = course.accepting ? "is" : "is not"
     </div>
     <p className="danceDescription">{course.description}</p>
     </div>
-    <button onClick={() => onClick(course.id)}>click</button>
+    
   </li>)
 }
 
