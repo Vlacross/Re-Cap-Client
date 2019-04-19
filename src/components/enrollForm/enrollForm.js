@@ -28,9 +28,8 @@ export class EnrollForm extends React.Component {
 
     render() {
 
-    console.log(this.props)
       
-      let { error, handleSubmit, pristine, submitting } = this.props
+      let { error, handleSubmit, pristine, submitting, invalid } = this.props
 
     if(error) {
       error = <div className="formError">{this.props.error}</div>
@@ -94,7 +93,7 @@ export class EnrollForm extends React.Component {
    <div>
     <button
       type="submit"
-      disabled={pristine || submitting}>
+      disabled={pristine || submitting || invalid}>
        Submit
     </button>
    </div>
