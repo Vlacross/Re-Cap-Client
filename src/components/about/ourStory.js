@@ -17,6 +17,7 @@ import './ourStory.css';
 }
 
 const mapStateToProps = state => ({
+  state: state,
   bio: state.bio.bio
 })
 

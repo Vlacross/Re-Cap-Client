@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { clearAuth } from '../../actions/authActions';
+import { clearAuth, clearAuthError } from '../../actions/authActions';
 import { setDisplayView } from '../../actions/courseActions';
 import { removeToken } from '../../localStorage';
 
@@ -19,6 +19,10 @@ class HeaderNav extends React.Component {
 
  setCourseListView() {
   this.props.dispatch(setDisplayView(null))
+ }
+
+ clearAuthError() {
+  this.props.dispatch(clearAuthError())
  }
 
   render() {
@@ -58,8 +62,8 @@ class HeaderNav extends React.Component {
     
       if(!this.props.loggedIn) {
         console.log('loggedIn')
-        signIn = <NavBarLink name={login.name} path={login.path} />
-        signup = <NavBarLink name={enroll.name} path={enroll.path} />
+        signIn = <NavBarLink name={login.name} path={login.path} onClick={() => this.clearAuthError()} />
+        signup = <NavBarLink name={enroll.name} path={enroll.path} onClick={() => this.clearAuthError()} />
         
         
         
@@ -67,7 +71,7 @@ class HeaderNav extends React.Component {
       if(this.props.loggedIn) {
         console.log('NOTTYNOTTYNOTTYloggedIn')
         home = <NavBarLink name={dashboard.name} path={dashboard.path} />
-        logout = <button className="logoutButton" href="" onClick={() => this.logOut()}>LogOut</button>
+        logout = <button className="logoutButton" onClick={() => this.logOut()}>LogOut</button>
       }
     
 

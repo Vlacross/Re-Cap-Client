@@ -4,17 +4,26 @@ import './navBarLink.css';
 
 export default function navBarLink(props) {
 
-  const { path, name, onClick } = props;
+  
+  const { path, name } = props;
 
-
-  return (
-    <Link 
-      to={path}
-      onClick={() => onClick()}>
-      {name}
-      
-    </Link>
-
-  );
-}
+  if(props.onClick) {
+    
+    return (
+      <Link 
+        to={path}
+        onClick={() => props.onClick()}>
+        {name}
+      </Link>
+    );
+  }
+  
+    return (
+      <Link 
+        to={path}>
+        {name}
+        
+      </Link>
+    );
+};
 

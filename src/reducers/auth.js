@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST_LOADING, LOGIN_REQUEST_SUCCESS, LOGIN_REQUEST_FAILURE, SET_TOKEN, CLEAR_AUTH } from '../actions';
+import { LOGIN_REQUEST_LOADING, LOGIN_REQUEST_SUCCESS, LOGIN_REQUEST_FAILURE, CLEAR_AUTH_ERROR, SET_TOKEN, CLEAR_AUTH } from '../actions';
 
 
 const initialState = {
@@ -30,6 +30,12 @@ export default function authReducer(state = initialState, action) {
     return Object.assign({}, state, {
       token: null,
       user: null
+    })
+  }
+  else if (action.type === CLEAR_AUTH_ERROR) {
+    console.log('clearingAuthErrors')
+    return Object.assign({}, state, {
+      error: null
     })
   }
   else if(action.type === LOGIN_REQUEST_SUCCESS) {

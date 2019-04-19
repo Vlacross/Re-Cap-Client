@@ -69,11 +69,6 @@ export class LoginForm extends React.Component {
 
 };
 
- LoginForm = reduxForm({
-    form: 'loginForm',
-    onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
-  })(LoginForm)
-  
   
   LoginForm = connect(
     state => ({
@@ -82,6 +77,12 @@ export class LoginForm extends React.Component {
       initialValues: state.auth.user,
       error: state.auth.error
     }))(LoginForm)
+
+     LoginForm = reduxForm({
+    form: 'loginForm',
+    onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
+  })(LoginForm)
+  
     
     LoginForm = dashboardRedirect()(LoginForm);
   

@@ -31,19 +31,18 @@ export class OfferedTypes extends React.Component {
     : this.props.dispatch(setDisplayView(null))
   }
 
- render() {
+  render() {
 
-  const { courseList, singleCourse, course } = this.props;
+  const { courseList, singleCourse, course, loggedIn } = this.props;
 
  
-
   if(!singleCourse) {
     console.log('bog')
     return (
       <div className="offeredTypes">
        <ul className="coursesList">
         {courseList.map((course, index) => {
-         return( <DanceStyle key={index} onClick={(id) => this.handleToggle(id)} id={course.id} course={course} /> )
+         return( <DanceStyle key={index} onClick={(id) => this.handleToggle(id)} loggedIn={loggedIn} course={course} /> )
           })
         }
        </ul>
@@ -59,14 +58,15 @@ export class OfferedTypes extends React.Component {
 
       </ul>
     </div>
-);
+  );
 
-}}
+}};
 
 
 
 const mapStateToProps = state => ({
   state: state,
+  loggedIn: state.auth.user !== null,
   course: state.courses.course,
   singleCourse: state.courses.course !== null,
   courseList: state.courses.courseList,

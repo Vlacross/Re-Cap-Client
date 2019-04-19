@@ -16,6 +16,11 @@ export const clearAuth = () => ({
   type: CLEAR_AUTH
 });
 
+export const CLEAR_AUTH_ERROR = 'CLEAR_AUTH_ERROR'
+export const clearAuthError = () => ({
+  type: CLEAR_AUTH_ERROR
+})
+
 export const LOGIN_REQUEST_LOADING = 'LOGIN_REQUEST_LOADING';
 export const loginRequestLoading = () => ({
   type: LOGIN_REQUEST_LOADING
