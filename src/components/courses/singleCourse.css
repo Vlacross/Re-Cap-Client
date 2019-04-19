@@ -1,4 +1,4 @@
-.styleListing {
+.singleCourseCard {
   border: solid 1px white;
   margin: 8px;
   padding-top: 20px;
@@ -13,3 +13,6 @@
 
 }
 
+div {
+  margin-top: 8px;
+}

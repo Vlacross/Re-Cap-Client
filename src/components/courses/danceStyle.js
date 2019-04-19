@@ -4,21 +4,27 @@ import { connect } from 'react-redux';
 import './danceStyle.css'
 
 
-function DanceStyle({style}) {
+function DanceStyle({ course, onClick }) {
+
+/*use less course details here */
+
+let accepting = course.accepting ? "is" : "is not"
+
   return(
   <li  className="styleListing">
     <div>
     <div>
-      <h1 className="danceName">Class: {style.style}</h1>
+      <a className="danceStyle">Class: {course.style}</a>
     </div>
     <div>
-      <span className="danceTeacher">Teacher: {style.teacher}</span>
+      <span className="danceTeacher">Teacher: {course.teacher}</span>
     </div>
     <div>
-      <span className="danceAccepting">Currently accepting students: {style.accepting}</span>
+      <span className="danceAccepting">This course {accepting} currently accepting students.</span>
     </div>
-    <p className="danceDescription">{style.details.descriptionShort}</p>
+    <p className="danceDescription">{course.description}</p>
     </div>
+    <button onClick={() => onClick(course.id)}>click</button>
   </li>)
 }
 

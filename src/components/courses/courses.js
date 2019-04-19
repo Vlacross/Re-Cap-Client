@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchCourseData, offeredCourses } from '../../actions';
+import { fetchCourseData, offeredCourses, setDisplayView, getCourseInfo } from '../../actions';
 import './courses.css'
 
+import SingleCourse from './singleCourse';
 import DanceStyle from './danceStyle';
 
 
@@ -18,23 +19,46 @@ export class OfferedTypes extends React.Component {
 
   }
 
+  handleToggle(id) {
+    console.log('togglingClick', id)
+
+    this.props.dispatch(getCourseInfo(id))
+  }
+
+  handleClick(type, id) {
+    type === 'signUp' ?
+    console.log('signUp', id) :
+    console.log('back')
+    this.props.dispatch(setDisplayView(null))
+  }
+
  render() {
 
-  const listings = 
-  this.props.courses.map((course, index) => {
-    return(
-    <DanceStyle key={index} style={course} />
-    )
-  })
+  const { courseList, singleCourse, course } = this.props;
+
+ 
+
+  if(!singleCourse) {
+    console.log('bog')
+    return (
+      <div className="offeredTypes">
+       <ul className="coursesList">
+        {courseList.map((course, index) => {
+         return( <DanceStyle key={index} onClick={(id) => this.handleToggle(id)} id={course.id} course={course} /> )
+          })
+        }
+       </ul>
+      </div>
+    ) 
+  }
  
   
   return(
     <div className="offeredTypes">
       <ul className="coursesList">
-        {listings}
+      <SingleCourse course={course} onClick={(type, id) => this.handleClick(type, id)}/>
 
       </ul>
-
     </div>
 );
 
@@ -44,7 +68,9 @@ export class OfferedTypes extends React.Component {
 
 const mapStateToProps = state => ({
   state: state,
-  courses: state.courses.courses,
+  course: state.courses.course,
+  singleCourse: state.courses.course !== null,
+  courseList: state.courses.courseList,
   loading: state.courses.loading
 });
 

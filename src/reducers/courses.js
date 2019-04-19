@@ -1,17 +1,19 @@
 /*import actions from actions file */
-import { OFFERED_COURSES, FETCH_COURSES_SUCCESS, FETCH_COURSES_ERROR } from '../actions'
+import { OFFERED_COURSES, FETCH_COURSES_SUCCESS, FETCH_COURSES_ERROR, SET_DISPLAY_VIEW } from '../actions'
 import mockCourses from '../courses/styles';
 
 
 
 
 let initialState = {
-  courses: mockCourses,
+  courseList: mockCourses,
+  course: null,
   error: null,
   loading: false
  
 }
 
+/*add 'toggleView' prop to state, to switch between displaying the list or single course */
 
 export default function courseReducer(state = initialState, action) {
   if(action.type === OFFERED_COURSES) {
@@ -24,7 +26,7 @@ export default function courseReducer(state = initialState, action) {
   else if(action.type === FETCH_COURSES_SUCCESS) {
     console.log('Course-Fetch-Success')
     return Object.assign({}, state, {
-      courses: action.data,
+      courseList: action.data,
       error: null,
       loading: false
     });
@@ -36,6 +38,12 @@ export default function courseReducer(state = initialState, action) {
         loading: false
       })
     
+  }
+  else if(action.type === SET_DISPLAY_VIEW) {
+    console.log('switching course display')
+    return Object.assign({}, state, {
+      course: action.data
+    })
   }
   
   return state;
