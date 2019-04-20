@@ -26,8 +26,12 @@ export class OfferedTypes extends React.Component {
   }
 
   handleClick(type, id) {
+    let load = {
+      course: id,
+      user: this.props.state.auth.user.id
+    }
     type === 'signUp' ?
-    this.props.dispatch(signUp(id)) 
+    this.props.dispatch(signUp(load)) 
     : this.props.dispatch(setDisplayView(null))
   }
 
