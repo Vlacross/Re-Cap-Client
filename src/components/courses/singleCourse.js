@@ -1,4 +1,5 @@
 import React from 'react';
+import checkAuth from '../checkAuth/checkAuth'
 import './singleCourse.css'
 
 
@@ -54,4 +55,4 @@ let accepting = course.accepting ? "is" : "is not"
 
 
 
-export default SingleCourse;
+export default checkAuth()(SingleCourse);
