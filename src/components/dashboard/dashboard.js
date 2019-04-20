@@ -11,16 +11,19 @@ export class Dashboard extends React.Component {
   render() {
 
   console.log('Dashing', this.props)
+  let { firstname, lastname, contact } = this.props.user;
 
       return (
         <div className="dashboard">
-          <h4>
+          <h1 className="dashboardTitle">
             Dashing Board, Idn't It, Huggaburgh?!
+          </h1>
             <div className="courseProgress">
+            <h2>{firstname} {lastname}</h2>
+            <p>{contact}</p>
               
             </div>
 
-          </h4>
         </div>
       );
   }

@@ -1,0 +1,19 @@
+.dashboard {
+  color: rgb(255, 255, 255);
+  border: solid 1px black;
+  height: 80vh;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.35)
+  );
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin: 10px;
+  border-radius: 8px;
+  padding: 40px;
+}
+
+.dashboardTitle {
+  font-size: 2em;
+}
