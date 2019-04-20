@@ -61,9 +61,45 @@ export const getCourseInfo = (id) => (dispatch) => {
 
 }
 
-export const signUp = (id) => (dispatch) => {
+export const signUp = (load) => (dispatch) => {
+
+  const { course, user } = load
 
   // dispatch(offeredCourses())
-  console.log('inACtions with id = ', id)
+  console.log('inACtions with id = ', course)
 
+  const options = {
+    method: 'put',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({user: user})
+  }
+
+  return fetch(`${API_URI}courses/signup/${course}`, options)
+  .then(res => normalizeResponse(res))
+  .then(data => {
+    console.log('single', data)
+    
+  })
+  .catch(err => {
+    let msg;
+    switch(err.code) {
+      case 451:
+        msg = err.message;
+        break;
+      case 11000:
+        msg = 'Username already in use, pick something else';
+        break;
+      default:
+        msg = 'Something went wrong, try again!';
+    }
+    console.log(err)
+    /*dispatchErrorHandle(msg) */
+  })
 }
+
+
+/*code: 451,
+        message: "User is already enrolled in this course!" */
