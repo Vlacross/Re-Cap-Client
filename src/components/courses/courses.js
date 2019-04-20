@@ -13,7 +13,6 @@ import DanceStyle from './danceStyle';
 export class OfferedTypes extends React.Component { 
 
   componentDidMount() {
-    console.log('props from didMount ', this.props);
     this.props.dispatch(fetchCourseData())
     this.props.dispatch(offeredCourses())
 
@@ -41,7 +40,6 @@ export class OfferedTypes extends React.Component {
 
  
   if(!singleCourse) {
-    console.log('bog')
     return (
       <div className="offeredTypes">
        <ul className="coursesList">

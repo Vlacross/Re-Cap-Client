@@ -5,9 +5,9 @@ import { Redirect } from 'react-router-dom';
 
 export default () => Component => {
 
-  console.log('redirectingToDashboord!!')
+
   function routeToDashboard(props) {
-    console.log(props)
+    // console.log(props)
 
     const { loggedIn, loading, error, ...passThroughProps } = props;
 

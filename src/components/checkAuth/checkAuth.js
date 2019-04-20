@@ -5,21 +5,19 @@ import { Redirect } from 'react-router-dom';
 
 export default () => Component => {
 
-  console.log('checking auths!!')
   function CheckAuth(props) {
 
 
-    const showLoad = <div>Loading...</div>;
     const { loggedIn, loading, error, ...passThroughProps } = props;
 
     if(loading) {
-      return {showLoad}
+      return <div>Loading...</div>
     } 
     else if (!loggedIn || error) {
-      console.log(error, loggedIn)
+      
       return <Redirect to="/login" />
     }
-    console.log('movingToWrappedComponent')
+    
     return <Component {...passThroughProps}/>
 
   };

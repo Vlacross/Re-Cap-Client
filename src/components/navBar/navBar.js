@@ -61,7 +61,7 @@ class HeaderNav extends React.Component {
 
     
       if(!this.props.loggedIn) {
-        console.log('loggedIn')
+        console.log('NOTNOTloggedIn')
         signIn = <NavBarLink name={login.name} path={login.path} onClick={() => this.clearAuthError()} />
         signup = <NavBarLink name={enroll.name} path={enroll.path} onClick={() => this.clearAuthError()} />
         
@@ -69,7 +69,7 @@ class HeaderNav extends React.Component {
         
       }
       if(this.props.loggedIn) {
-        console.log('NOTTYNOTTYNOTTYloggedIn')
+        console.log('loggedIn')
         home = <NavBarLink name={dashboard.name} path={dashboard.path} />
         logout = <button className="logoutButton" onClick={() => this.logOut()}>LogOut</button>
       }
