@@ -11,7 +11,7 @@ error: null
 
 export default function authReducer(state = initialState, action) {
   if(action.type === LOGIN_REQUEST_LOADING) {
-    console.log('loginRequestLoading fired')
+    // console.log('loginRequestLoading fired')
     return Object.assign({}, state, {
       loading: true,
       error: null
@@ -19,34 +19,34 @@ export default function authReducer(state = initialState, action) {
 
   }
   else if (action.type === SET_TOKEN) {
-    console.log('StoringTokenToState', action.token)
+    // console.log('StoringTokenToState', action.token)
     return Object.assign({}, state, {
       user: action.user,
       token: action.token
     })
   }
   else if (action.type === CLEAR_AUTH) {
-    console.log('clearingAuthInTheDucer')
+    // console.log('clearingAuthInTheDucer')
     return Object.assign({}, state, {
       token: null,
       user: null
     })
   }
   else if (action.type === CLEAR_AUTH_ERROR) {
-    console.log('clearingAuthErrors')
+    // console.log('clearingAuthErrors')
     return Object.assign({}, state, {
       error: null
     })
   }
   else if(action.type === LOGIN_REQUEST_SUCCESS) {
-    console.log('loginRequestSucces fired')
+    // console.log('loginRequestSucces fired')
     return Object.assign({}, state, {
       loading: false
     })
 
   }
   else if(action.type === LOGIN_REQUEST_FAILURE) {
-    console.log('loginRequestError fired')
+    // console.log('loginRequestError fired')
     console.log(action.error)
     return Object.assign({}, state, {
       error: action.error,

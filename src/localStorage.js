@@ -9,7 +9,7 @@ export const storeToken = token => {
   catch(e) {}
 };
 
-export const removeToken = token => {
+export const removeToken = () => {
   try {
     localStorage.removeItem('token');
   }

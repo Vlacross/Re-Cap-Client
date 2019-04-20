@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import { API_URI } from '../config';
-import { storeToken } from '../localStorage';
+import { storeToken, removeToken } from '../localStorage';
 import { normalizeResponse, distinguishAuthFormat } from './utils' ;
 
 
@@ -43,7 +43,7 @@ export const loginRequestFailure = error => ({
 const storeAuth = (token, dispatch) => {
   
   const decodedToken = jwtDecode(token);
-  console.log('storing-39', decodedToken)
+  // console.log('storing-39', decodedToken)
   dispatch(setToken(token, decodedToken.user))
   dispatch(loginRequestSuccess())
   storeToken(token)
@@ -55,7 +55,7 @@ export const authFetch = (values) => (dispatch) => {
   let credentials = distinguishAuthFormat(values)
   let { load, route } = credentials
 
-  console.log('creds-51', credentials)
+  // console.log('creds-51', credentials)
 
  const options = {
   method: 'post',
@@ -73,8 +73,8 @@ export const authFetch = (values) => (dispatch) => {
   return fetch(`${API_URI}login${route}`, options)
   .then(res => normalizeResponse(res))
   .then(token => {
-    console.log('postFetch -64', token)
-    if(token.errmsg) { return Promise.reject(token) } 
+    // console.log('postFetch -64', token)
+    // if(token.errmsg) { console.log('return Promise.reject(token)') } 
     storeAuth(token, dispatch)
   })
   .catch(error => {
@@ -94,5 +94,33 @@ export const authFetch = (values) => (dispatch) => {
   })
 }
 
+
+export const refreshToken = () => (dispatch, getState) => {
+
+  dispatch(loginRequestLoading());
+  console.log('refrefre')
+
+  let token = getState().auth.token
+
+  let options = {
+    method: 'post',
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+  
+  return fetch(`${API_URI}login/refresh`, options)
+  .then(res => normalizeResponse(res))
+  .then(token => {
+    storeAuth(token, dispatch)
+  })
+  .catch(error => {
+    console.log(error)
+    dispatch(loginRequestFailure(error))
+    dispatch(clearAuth())
+    removeToken()
+  })
+
+}
 
 

@@ -3,8 +3,8 @@ import { reducer as formReducer  } from 'redux-form';
 import thunk from 'redux-thunk';
 import jwtDecode from 'jwt-decode';
 
-import { loadToken } from './localStorage';
-import { setToken } from './actions/authActions';
+import { loadToken, storeToken } from './localStorage';
+import { setToken, refreshToken } from './actions/authActions';
 
 import  staticReducer  from './reducers/staticReducer';
 import courseReducer from './reducers/courses';
@@ -30,8 +30,12 @@ form: formReducer
 const authToken = loadToken();
 const user = !authToken ? null : jwtDecode(authToken).user
 
+
 if(authToken) {
+  console.log('authy!', store.getState())
   store.dispatch(setToken(authToken, user))
+  store.dispatch(refreshToken(authToken))
+  storeToken(store.getState().auth.token)
 
 }
 

@@ -66,7 +66,7 @@ export const signUp = (load) => (dispatch) => {
   const { course, user } = load
 
   // dispatch(offeredCourses())
-  console.log('inACtions with id = ', course)
+  
 
   const options = {
     method: 'put',
@@ -80,10 +80,12 @@ export const signUp = (load) => (dispatch) => {
   return fetch(`${API_URI}courses/signup/${course}`, options)
   .then(res => normalizeResponse(res))
   .then(data => {
+    if(data.type === 'error') { return Promise.reject(data) } 
     console.log('single', data)
     
   })
   .catch(err => {
+    
     let msg;
     switch(err.code) {
       case 451:
@@ -95,7 +97,7 @@ export const signUp = (load) => (dispatch) => {
       default:
         msg = 'Something went wrong, try again!';
     }
-    console.log(err)
+    console.log(msg)
     /*dispatchErrorHandle(msg) */
   })
 }
