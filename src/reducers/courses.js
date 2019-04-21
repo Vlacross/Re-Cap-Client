@@ -1,5 +1,5 @@
 /*import actions from actions file */
-import { OFFERED_COURSES, FETCH_COURSES_SUCCESS, FETCH_COURSES_ERROR, SET_DISPLAY_VIEW } from '../actions'
+import { OFFERED_COURSES, FETCH_COURSES_SUCCESS, FETCH_COURSES_ERROR, SET_DISPLAY_VIEW, CLEAR_ERROR } from '../actions'
 import mockCourses from '../courses/styles';
 
 
@@ -35,6 +35,14 @@ export default function courseReducer(state = initialState, action) {
     console.log('Course-Fetch_errored') 
       return Object.assign({}, state, {
         error: action.error,
+        loading: false
+      })
+    
+  }
+  else if(action.type === CLEAR_ERROR) {
+    console.log('Course-Error-Clear') 
+      return Object.assign({}, state, {
+        error: null,
         loading: false
       })
     

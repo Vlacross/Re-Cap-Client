@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchCourseData, offeredCourses, setDisplayView, getCourseInfo, signUp } from '../../actions';
+import { fetchCourseData, offeredCourses, setDisplayView, getCourseInfo, signUp, clearError } from '../../actions';
 import './courses.css'
 
 import SingleCourse from './singleCourse';
@@ -34,9 +34,26 @@ export class OfferedTypes extends React.Component {
     : this.props.dispatch(setDisplayView(null))
   }
 
+  handleError() {
+    this.props.dispatch(clearError())
+  }
+
   render() {
 
-  const { courseList, singleCourse, course, loggedIn } = this.props;
+  const { courseList, singleCourse, course, loggedIn, error } = this.props;
+
+  if(error) {
+    return (
+      <div className="offeredTypes">
+       <ul className="coursesList">
+       <h1>{error}</h1>
+       
+          <button onClick={() => this.handleError()} className="errorButton">Back</button>
+      
+       </ul>
+      </div>
+    )
+  }
 
  
   if(!singleCourse) {
@@ -72,7 +89,8 @@ const mapStateToProps = state => ({
   course: state.courses.course,
   singleCourse: state.courses.course !== null,
   courseList: state.courses.courseList,
-  loading: state.courses.loading
+  loading: state.courses.loading,
+  error: state.courses.error
 });
 
 export default connect(mapStateToProps)(OfferedTypes);

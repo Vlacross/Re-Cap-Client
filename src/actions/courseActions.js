@@ -27,10 +27,10 @@ export const setDisplayView = data => ({
   data
 })
 
-// export const SIGNUP = 'SIGNUP';
-// export const signUp = () => ({
-
-// })
+export const CLEAR_ERROR = 'CLEAR_ERROR';
+export const clearError = () => ({
+  type: CLEAR_ERROR
+})
 
 export const fetchCourseData = () => (dispatch, getState) => {
 
@@ -98,7 +98,7 @@ export const signUp = (load) => (dispatch) => {
         msg = 'Something went wrong, try again!';
     }
     console.log(msg)
-    /*dispatchErrorHandle(msg) */
+    dispatch(fetchCoursesError(msg))
   })
 }
 
