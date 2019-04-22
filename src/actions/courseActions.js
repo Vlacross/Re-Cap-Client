@@ -1,6 +1,8 @@
 import  { API_URI } from '../config';
 import {normalizeResponse} from './utils';
 
+import { refreshToken } from './authActions'
+
 
 
 export const OFFERED_COURSES = 'OFFERED_COURSES';
@@ -32,6 +34,7 @@ export const clearError = () => ({
   type: CLEAR_ERROR
 })
 
+/*Courses List Fetch */
 export const fetchCourseData = () => (dispatch, getState) => {
 
   dispatch(offeredCourses())
@@ -48,6 +51,7 @@ export const fetchCourseData = () => (dispatch, getState) => {
   })
 };
 
+/*single Course Info */
 export const getCourseInfo = (id) => (dispatch) => {
 
   dispatch(offeredCourses())
@@ -61,18 +65,19 @@ export const getCourseInfo = (id) => (dispatch) => {
 
 }
 
+/*Dance Course SignUp */
 export const signUp = (load) => (dispatch) => {
 
-  const { course, user } = load
+  const { course, user, token } = load
 
-  // dispatch(offeredCourses())
+  dispatch(offeredCourses())
   
-
   const options = {
     method: 'put',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
     },
     body: JSON.stringify({user: user})
   }
@@ -82,10 +87,11 @@ export const signUp = (load) => (dispatch) => {
   .then(data => {
     if(data.type === 'error') { return Promise.reject(data) } 
     console.log('single', data)
+    dispatch(refreshToken())
     
   })
   .catch(err => {
-    
+    console.log(err)
     let msg;
     switch(err.code) {
       case 451:
