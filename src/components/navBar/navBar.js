@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { clearAuth, clearAuthError } from '../../actions/authActions';
+import { clearAuth, clearAuthError, refreshToken } from '../../actions/authActions';
 import { setDisplayView } from '../../actions/courseActions';
 import { removeToken } from '../../localStorage';
 
@@ -23,6 +23,10 @@ class HeaderNav extends React.Component {
 
  clearAuthError() {
   this.props.dispatch(clearAuthError())
+ }
+
+ hydrateUserState() {
+  this.props.dispatch(refreshToken())
  }
 
   render() {
@@ -70,7 +74,7 @@ class HeaderNav extends React.Component {
       }
       if(this.props.loggedIn) {
         console.log('loggedIn')
-        home = <NavBarLink name={dashboard.name} path={dashboard.path} />
+        home = <NavBarLink name={dashboard.name} path={dashboard.path} onClick={() => this.hydrateUserState()} />
         logout = <button className="logoutButton" onClick={() => this.logOut()}>LogOut</button>
       }
     
