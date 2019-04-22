@@ -18,6 +18,16 @@ ul {
   list-style: none;
 }
 
+.errorButton {
+    width: 25%;
+    padding: 4px 0px;
+    border: none;
+    border-radius: 7px;
+    box-shadow: 0px 0px 20px rgb(240, 240, 170);
+    background: rgba(255, 255, 255, 0.80);
+  
+}
+
 
 
 
