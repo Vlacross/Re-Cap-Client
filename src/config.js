@@ -1,1 +1,3 @@
-export const API_URI = 'http://localhost:8080/'
+require('dotenv').config()
+
+export const API_URI = process.env.API_URI
