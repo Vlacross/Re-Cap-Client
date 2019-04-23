@@ -17,3 +17,23 @@
 .dashboardTitle {
   font-size: 2em;
 }
+
+.progressBar {
+  height: 100px;
+  border: solid 2px black;
+  display: flex;
+}
+
+.increment {
+  margin: 2px;
+  border: solid 1px green;
+  flex: 1;
+}
+
+.progress {
+  background: green;
+}
+
+.increment:hover {
+  background: rgb(84, 153, 84);
+}
