@@ -1,2 +1,9 @@
 language: node_js
 node_js: node_js
+deploy:
+  provider: heroku
+  api_key:
+    secure: MJOeie5Vg6fc6PAax6X80iO3CeRaPqeqLtbUCY1EI95GS+bzedqW/V2Tij6JfcX/PzcyQSuc6pKgI447NdeWTEd0FCWLAbKyDg0rdH72ym/u5/Mf4rLOJqo4Z1fUbTeSIjObx2fex2rN8Ik2vWWu7T4mtCyPPQ+kVpuhlzxdlo0ShwUve8OPuvY3CdvElDIUxV19vFMvfPWfJ4Du/0z5oIORejeYz96dHVoQ2/F8ps5uAf9fWDn+w05q7cvnqKtG9OePRMwChvDs9pGvqqlbia8dwy+fNg4RFvdAyJTV/HocNspNiqHOQNIrMag5zNNbNIL1ifuZ/iLyx09sqCKAT1jqea0MsNmmxLg66mMboSh+y9m9YebJG/xPDDmKAOt8Fms/JuKdvuQhkoGbhkYxKmfE+fFl9xljHyKZw0rfh0Timb7ay4uUPFsro2SS+AonBXrt3AgGUXsv8wzEWCPNaI6K1gnJkCxy/5n0GZMWKm1IG0+X4YzB7ji+QskYy1ruoEJp6RhkPftvTXkkOEqGLECfnWVQTajl85rmSVAvFM6JVuKRASSvPxCzqsRBoiF68/N0uwLVNwU+bwd3MD61rraRjg4IZ+qFBza8AcuncMYOrxh6upZc2f3PAfSD3AIjX/2e/FakIjcthXtITHxneYVh/L6zHgKCZw8pspD6ClE=
+  app: enigmatic-anchorage-28127
+  on:
+    repo: Vlacross/Re-Cap-Client
