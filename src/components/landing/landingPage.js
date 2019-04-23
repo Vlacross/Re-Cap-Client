@@ -1,12 +1,13 @@
 import React from 'react';
 
 import LandingIntro from './landingIntro';
-// import AboutUs from './aboutUs'
+import dashboardRedirect from '../checkAuth/dashboardRedirect';
+
 
 import './landingPage.css';
 
 
-export default function LandingPage(props) {
+ function LandingPage(props) {
 
   return (
     <div className="landingPage">
@@ -17,3 +18,4 @@ export default function LandingPage(props) {
 
 }
 
+export default dashboardRedirect()(LandingPage)
