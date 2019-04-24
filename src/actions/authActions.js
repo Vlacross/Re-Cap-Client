@@ -68,6 +68,7 @@ export const authFetch = (values) => (dispatch) => {
 
   dispatch(loginRequestLoading())
   console.log(`fetching from ${API_URI}login${route}--63`)
+  // console.log(process.env.REACT_APP_API_URI)
 
    
   return fetch(`${API_URI}login${route}`, options)

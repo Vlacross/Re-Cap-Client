@@ -35,7 +35,7 @@ export const clearError = () => ({
 })
 
 /*Courses List Fetch */
-export const fetchCourseData = () => (dispatch, getState) => {
+export const fetchCourseData = () => (dispatch) => {
 
   dispatch(offeredCourses())
   console.log(`fetching courses`)

@@ -10,7 +10,7 @@ import './navBar.css';
 
 class HeaderNav extends React.Component {
 
-  //*[(About Us), (Offered Dance Types), (SignIn), (Enroll)] */
+
  logOut() {
    console.log('OUT!')
    this.props.dispatch(clearAuth())

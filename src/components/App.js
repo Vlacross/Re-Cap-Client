@@ -20,7 +20,7 @@ class App extends Component {
   
 
   render() {
-console.log("app", this.props)
+
     return (
 
       
@@ -41,7 +41,8 @@ console.log("app", this.props)
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.auth.user !== null
+  loggedIn: state.auth.user !== null,
+  state: state
 })
 
 export default connect(mapStateToProps)(withRouter(App));

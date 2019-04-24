@@ -6,7 +6,7 @@ import { OFFERED_COURSES, FETCH_COURSES_SUCCESS, FETCH_COURSES_ERROR, SET_DISPLA
 
 
 let initialState = {
-  courseList: mockCourses,
+  courseList: [],
   course: null,
   error: null,
   loading: false

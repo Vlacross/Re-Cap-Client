@@ -20,7 +20,6 @@ export class OfferedTypes extends React.Component {
 
   handleToggle(id) {
     console.log('togglingClick', id)
-
     this.props.dispatch(getCourseInfo(id))
   }
 

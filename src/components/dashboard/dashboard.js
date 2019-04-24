@@ -30,7 +30,7 @@ export class Dashboard extends React.Component {
   console.log('Dashing', this.props)
 
   let { firstname, lastname, contact, enrolled, courses, progress } = this.props.user;
-  let { style, teacher, id, accepting, details: { schedule, length, difficulty } } = courses[0];
+  let { style, teacher, details: { schedule, length, difficulty } } = this.props.user.courses[0];
   let classes = length * schedule.length
   if(!enrolled) {
     courseBrowse = <NavBarLink name={offeredTypes.name} path={offeredTypes.path} onClick={() => this.setCourseListView()} />
