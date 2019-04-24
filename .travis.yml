@@ -1,10 +1,5 @@
 language: node_js
-<<<<<<< HEAD
-node_js: node
-
-=======
 node_js: "10"
->>>>>>> feature/tests
 deploy:
   provider: heroku
   api_key:
