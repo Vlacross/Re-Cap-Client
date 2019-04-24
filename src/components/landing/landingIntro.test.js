@@ -1,9 +1,11 @@
 import React from 'react';
+import { shallow } from 'enzyme';
 import ReactDOM from 'react-dom';
-import App from './App';
+import LandingIntro from './landingIntro';
 
 it('renders without crashing', () => {
-	const div = document.createElement('div');
-	ReactDOM.render(<App />, div);
-	ReactDOM.unmountComponentAtNode(div);
+	
+	const wrapper = shallow(<LandingIntro />)
+	// console.log(wrapper)
+expect(wrapper).toBeDefined()
 });

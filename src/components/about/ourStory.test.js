@@ -1,9 +1,10 @@
 import React from 'react';
+import { shallow } from 'enzyme';
 import ReactDOM from 'react-dom';
-import App from './App';
+import OurStory from './ourStory';
 
 it('renders without crashing', () => {
-	const div = document.createElement('div');
-	ReactDOM.render(<App />, div);
-	ReactDOM.unmountComponentAtNode(div);
+	
+	const wrapper = shallow(<OurStory />)
+expect(wrapper).toBeDefined()
 });

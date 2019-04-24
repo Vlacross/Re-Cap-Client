@@ -8,5 +8,6 @@ import Store from '../store';
 
 
 it('renders without crashing', () => {
-  shallow(<App />)
+  const wrapper = shallow(<App />)
+  expect(wrapper).toBeDefined()
 });
