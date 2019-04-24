@@ -1,9 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { shallow } from 'enzyme';
+import Input from './input';
+
+
+const defaultProps = {
+  meta: {
+    touched: null,
+    error: null,
+	},
+	input: {
+		name: 'inputName',
+		type: 'text'
+	}
+}
 
 it('renders without crashing', () => {
-	const div = document.createElement('div');
-	ReactDOM.render(<App />, div);
-	ReactDOM.unmountComponentAtNode(div);
+	
+	const wrapper = shallow(<Input {...defaultProps} />)
+	// console.log(wrapper)
+expect(wrapper).toBeDefined()
 });
