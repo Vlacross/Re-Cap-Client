@@ -7,3 +7,4 @@ deploy:
   app: enigmatic-anchorage-28127
   on:
     repo: Vlacross/Re-Cap-Client
+  skip_cleanup: true
