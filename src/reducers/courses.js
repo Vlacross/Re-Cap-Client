@@ -1,6 +1,6 @@
 /*import actions from actions file */
 import { OFFERED_COURSES, FETCH_COURSES_SUCCESS, FETCH_COURSES_ERROR, SET_DISPLAY_VIEW, CLEAR_ERROR } from '../actions'
-import mockCourses from '../courses/styles';
+
 
 
 
