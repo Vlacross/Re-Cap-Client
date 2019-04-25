@@ -1,7 +1,2 @@
-require('dotenv').config()
+export const API_URI = process.env.REACT_APP_API_URI || 'http://localhost:8080/'
 
-export const API_URI = 'https://shrouded-hamlet-23160.herokuapp.com/'
-
-/*
- || 'http://localhost:8080/'
-*/
