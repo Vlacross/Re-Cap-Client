@@ -40,7 +40,7 @@ export class OfferedTypes extends React.Component {
 
   render() {
 
-  const { courseList, singleCourse, course, loggedIn, error } = this.props;
+  const { courseList, singleCourse, course, loggedIn, error, loading } = this.props;
 
   if(error) {
     return (
@@ -51,6 +51,14 @@ export class OfferedTypes extends React.Component {
           <button onClick={() => this.handleError()} className="errorButton">Back</button>
       
        </ul>
+      </div>
+    )
+  }
+
+  if(loading) {
+    return (
+      <div className="offeredTypes">
+        <h1 className="styleListing">Loading...</h1>
       </div>
     )
   }
