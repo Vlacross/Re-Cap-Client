@@ -8,7 +8,7 @@ import { removeToken } from '../../localStorage';
 import NavBarLink from './navBarLink'
 import './navBar.css';
 
-class HeaderNav extends React.Component {
+export class HeaderNav extends React.Component {
 
 
  logOut() {
@@ -75,7 +75,7 @@ class HeaderNav extends React.Component {
       if(this.props.loggedIn) {
         console.log('loggedIn')
         home = <NavBarLink name={dashboard.name} path={dashboard.path} onClick={() => this.hydrateUserState()} />
-        logout = <button className="logoutButton" onClick={() => this.logOut()}>LogOut</button>
+        logout = <button name="LogOut" className="logoutButton" onClick={() => this.logOut()}>LogOut</button>
       }
     
 
