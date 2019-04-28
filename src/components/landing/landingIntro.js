@@ -12,22 +12,23 @@ export default function LandingIntro(props) {
     <div className="landingIntro">
       <h1>Learn To Dance</h1>
       <label>
-        <button className="introButton">
-          <Link
-            to="/login">
-            Sign In
-          </Link>
-        </button>
+        <Link
+          className="introLink"
+          name="Sign In"
+          to="/login">
+          Sign In
+        </Link>
       </label>
 
       <label>
-        <button className="introButton">
-            <Link 
-              to="/enroll">
-                Enroll
-            </Link>
-        </button>
+        <Link 
+          className="introLink"
+          name="Enroll"
+          to="/enroll">
+            Enroll
+        </Link>
       </label>
+           
     </div>
   );
 }
