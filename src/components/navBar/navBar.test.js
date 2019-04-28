@@ -57,7 +57,7 @@ describe('HeaderNav component without state', () => {
 	it('renders something without crashing', () => {
 		
 		const wrapper = shallow(<HeaderNav loggedIn={true}/>)
-		// console.log(wrapper)
+
 		expect(wrapper).toBeDefined()
 	});
 
@@ -68,14 +68,13 @@ describe('HeaderNav component without state', () => {
 				<HeaderNav loggedIn={true} />
 			</MemoryRouter>
 		)
-	
-		console.log(wrapper.debug())
 		
 		let links = new checkLinksLoggedIn(wrapper)
 
 		expect(wrapper).toBeDefined()
 		expect(links.activeLinks.length).toEqual(4)
 		expect(links.whichActiveLinks.filter(link => links.expectedLinks.includes(link)).length).toEqual(links.expectedLinks.length)
+		expect(checkPaths(links.activeLinks)).toBeTruthy()
 
 	});
 
@@ -92,6 +91,7 @@ describe('HeaderNav component without state', () => {
 		expect(wrapper).toBeDefined()
 		expect(links.activeLinks.length).toEqual(4)
 		expect(links.whichActiveLinks.filter(link => links.expectedLinks.includes(link)).length).toEqual(links.expectedLinks.length)
+		expect(checkPaths(links.activeLinks)).toBeTruthy()
 
 	});
 
@@ -127,14 +127,8 @@ describe('HeaderNav when connected to state', () => {
 				</MemoryRouter>
 			</Provider>
 		)
-		// let activeLinks = wrapper.find('.Navbar').props().children.filter(link => link !== undefined)
-		// let whichActiveLinks = activeLinks.map(link => (link.props.name))
-		// let expectedLinks = ['Our Story', 'Dance Styles', 'Sign In', 'Enroll']
 
-		let links = new checkLinksNotLoggedIn(wrapper)
-		console.log()
-			// console.log(wrapper.find('.Navbar').parent().props().loggedIn)
-		
+		let links = new checkLinksNotLoggedIn(wrapper)		
 
 		expect(wrapper).toBeDefined()
 		expect(links.activeLinks.length).toEqual(4)
@@ -144,8 +138,6 @@ describe('HeaderNav when connected to state', () => {
 	});
 
 	it('renders only certain navLinks based on auth state', () => { 
-
-		
 
 		const wrapper = mount(
 			<Provider store={storeWithTrue}>
@@ -163,83 +155,5 @@ describe('HeaderNav when connected to state', () => {
 		expect(checkPaths(links.activeLinks)).toBeTruthy()
 	});
 
+});
 
-// it.only('renders only certain navLinks based on auth state', () => { 
-
-// 	const wrapper = mount(
-// 		<Provider store={storeWithTrue}>
-// 			<MemoryRouter>
-// 				<ConnectedHeaderNav />
-// 			</MemoryRouter>
-// 		</Provider>
-// 	)
-// 	let activeLinks = wrapper.find('.Navbar').props().children.filter(link => link !== undefined)
-// 	let whichActiveLinks = activeLinks.map(link => (link.props.name))
-// 	let expectedLinks = ['Home', 'Our Story', 'Dance Styles', 'LogOut']
-
-// 	console.log(wrapper.debug())
-// 	console.log(wrapper.props().store.dispatch)
-
-// 	console.log()
-
-// 	console.log(whichActiveLinks.filter(link => link != [...expectedLinks]).length)
-
-// 	expect(wrapper).toBeDefined()
-// 	expect(activeLinks.length).toEqual(4)
-// 	expect(whichActiveLinks.filter(link => link != [...expectedLinks]).length).toEqual(expectedLinks.length)
-
-// });
-
-
-// const namePaths = {
-// 	"Home": "/dashboard",
-// 	"Our Story": "/ourStory",
-// 	"Dance Styles":"/offeredTypes",
-// 	"Sign In": "/login",
-// 	"Enroll": "/enroll"
-// }
-// let paths = Object.entries(namePaths)
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// it.only('renders only certain navLinks based on auth state', () => { 
-
-// 	const wrapper = mount(
-// 		<Provider store={storeWithTrue}>
-// 			<MemoryRouter>
-// 				<ConnectedHeaderNav />
-// 			</MemoryRouter>
-// 		</Provider>
-// 	)
-// 	let activeLinks = wrapper.find('.Navbar').props().children.filter(link => link !== undefined)
-// 	let whichActiveLinks = activeLinks.map(link => (link.props.name))
-// 	let expectedLinks = ['Home', 'Our Story', 'Dance Styles', 'LogOut']
-
-// 	console.log(wrapper.debug())
-// 	console.log(wrapper.props().store.dispatch)
-
-// 	console.log()
-
-// 	console.log(whichActiveLinks.filter(link => link != [...expectedLinks]).length)
-
-// 	expect(wrapper).toBeDefined()
-// 	expect(activeLinks.length).toEqual(4)
-// 	expect(whichActiveLinks.filter(link => link != [...expectedLinks]).length).toEqual(expectedLinks.length)
-
-// });
