@@ -7,7 +7,7 @@ import dashboardRedirect from '../checkAuth/dashboardRedirect';
 import './landingPage.css';
 
 
- function LandingPage(props) {
+ export function LandingPage(props) {
 
   return (
     <div className="landingPage">

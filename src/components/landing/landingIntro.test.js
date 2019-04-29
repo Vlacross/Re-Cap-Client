@@ -23,29 +23,42 @@ let checkPaths = (wrapper) => {
 
 
 
-it('renders expected content', () => { 
-
-	const wrapper = shallow(<LandingIntro />)
-
-	expect(wrapper).toBeDefined()
-	expect(wrapper.props().children.length).toBe(3)
-	expect(wrapper.find('.landingIntro').length).toBe(1)
-	expect(wrapper.find('.introLink').length).toBe(2)
+describe('landingPage Component', () => {
+	
+	
+	it('renders without crashing', () => {
+		shallow(<LandingIntro />)
+	
+	});
+	
+	it('renders something', () => {
+		const wrapper = shallow(<LandingIntro />)
+	
+		expect(wrapper).toBeDefined()
+	
+	});
+	
+	it('renders expected content', () => { 
+	
+		const wrapper = shallow(<LandingIntro />)
+	
+		expect(wrapper.props().children.length).toBe(3)
+		expect(wrapper.find('.landingIntro').length).toBe(1)
+		expect(wrapper.find('.introLink').length).toBe(2)
+	
+	});
+	
+	it('renders Links without crashing', () => { 
+	
+		const wrapper = mount(	
+			<MemoryRouter>
+				<LandingIntro />
+			</MemoryRouter>
+		)
+	
+		expect(wrapper).toBeDefined()
+		expect(checkPaths(wrapper)).toBeTruthy()
+	
+	});
 
 });
-
-it('renders Links without crashing', () => { 
-
-	const wrapper = mount(	
-		<MemoryRouter>
-			<LandingIntro />
-		</MemoryRouter>
-	)
-
-	console.log(checkPaths(wrapper))
-
-	expect(wrapper).toBeDefined()
-	expect(checkPaths(wrapper)).toBeTruthy()
-
-});
-
