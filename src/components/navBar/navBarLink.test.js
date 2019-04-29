@@ -8,6 +8,11 @@ const mock = {
 			path: "/mockRoute"
 };
 
+
+describe('navBarLinks', () => {
+
+
+
 it('renders something', () => { 
 
 	const wrapper = mount(	
@@ -37,6 +42,7 @@ it('renders without crashing', () => {
 	expect(wrapper.children().props().children.props.name).toEqual(mock.name)
 	expect(wrapper.children().props().history.location.pathname).toEqual(entries[entryIndex])
 
-
-
 });
+
+	});
+		
