@@ -11,6 +11,7 @@ export default function navBarLink(props) {
     
     return (
       <Link 
+        className="navLink"
         to={path}
         onClick={() => props.onClick()}>
         {name}
@@ -20,6 +21,7 @@ export default function navBarLink(props) {
   
     return (
       <Link 
+        className="navLink"
         to={path}>
         {name}
         

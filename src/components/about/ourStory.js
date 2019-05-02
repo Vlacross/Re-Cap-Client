@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './ourStory.css';
 
- function OurStory(props) {
+ export function OurStory(props) {
   
   console.log(props)
   
   return (
     <div className="ourStory">
-      <h4>
+      <h4 className="bioText">
         Hello Then!i
         {props.bio}
       </h4>

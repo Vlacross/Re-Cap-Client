@@ -1,11 +1,64 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import ReactDOM from 'react-dom';
+import { shallow, mount } from 'enzyme';
+import { MemoryRouter } from 'react-router';
 import LandingIntro from './landingIntro';
 
-it('renders without crashing', () => {
+let expectedPaths = {
+	'Sign In': '/login',
+	'Enroll': '/enroll'
+}
+
+let checkPaths = (wrapper) => {
+
+	let result = []
+	let links = wrapper.find('.landingIntro').props().children.filter(el => (el.type === 'label'));
+	let linkPaths = links.map(link => (links[0].props.children.props))
+	for(let k in linkPaths) {
+		result.push(linkPaths[k] === expectedPaths[k])
+	}
+	return result.includes('false') ?
+		false : 
+		true
+};
+
+
+
+describe('landingPage Component', () => {
 	
-	const wrapper = shallow(<LandingIntro />)
-	// console.log(wrapper)
-expect(wrapper).toBeDefined()
+	
+	it('renders without crashing', () => {
+		shallow(<LandingIntro />)
+	
+	});
+	
+	it('renders something', () => {
+		const wrapper = shallow(<LandingIntro />)
+	
+		expect(wrapper).toBeDefined()
+	
+	});
+	
+	it('renders expected content', () => { 
+	
+		const wrapper = shallow(<LandingIntro />)
+	
+		expect(wrapper.props().children.length).toBe(3)
+		expect(wrapper.find('.landingIntro').length).toBe(1)
+		expect(wrapper.find('.introLink').length).toBe(2)
+	
+	});
+	
+	it('renders Links without crashing', () => { 
+	
+		const wrapper = mount(	
+			<MemoryRouter>
+				<LandingIntro />
+			</MemoryRouter>
+		)
+	
+		expect(wrapper).toBeDefined()
+		expect(checkPaths(wrapper)).toBeTruthy()
+	
+	});
+
 });
