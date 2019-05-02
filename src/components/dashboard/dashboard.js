@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NavBarLink from '../navBar/navBarLink';
-import ProgressBar from './progressBar';
 import { setDisplayView } from '../../actions/courseActions';
 import checkAuth from '../checkAuth/checkAuth';
 import './dashboard.css';
@@ -25,7 +24,7 @@ export class Dashboard extends React.Component {
 
     let isEnrolled;
     let courseBrowse;
-    let progressBar;
+    
 
   console.log('Dashing', this.props)
 
@@ -48,7 +47,7 @@ export class Dashboard extends React.Component {
         <p>Difficulty Rating: {difficulty}</p>
       </div>
       )
-   progressBar = <ProgressBar classes={classes} progress={progress}/>
+   
   }
 
 
@@ -64,7 +63,7 @@ export class Dashboard extends React.Component {
             <div className="enrolled">
             {isEnrolled}
             {courseBrowse}
-            {progressBar}
+            
             </div>
               
             </div>
