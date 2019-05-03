@@ -25,3 +25,13 @@ code {
 }
 
 
+
+@media only screen and (max-width: 900px) {
+  #root {
+    
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
