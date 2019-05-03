@@ -2,7 +2,7 @@
   color: rgb(255, 255, 255);
   height: 48vh;
   background: linear-gradient(
-    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.74),
     rgba(0, 0, 0, 0.35)
   ),
   url("./images/dontz4.jpg"), center;
@@ -18,14 +18,22 @@ h4 {
   overflow-y: hidden;
 }
 
-
 @media only screen and (max-width: 1000px) {
   .ourStory {
       background-size: cover;
-
+      padding: 18px;
       background-position: 45% 0px;
       
   }
+
+@media only screen and (max-width: 740px) {
+
+  .ourStory {
+    width: 100%;
+  }
+}
+
+
  
 }
 /*
