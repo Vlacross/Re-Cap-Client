@@ -24,27 +24,33 @@ export class Dashboard extends React.Component {
 
     let isEnrolled;
     let courseBrowse;
+    let courseProgress;
     
 
   console.log('Dashing', this.props)
 
   let { firstname, lastname, contact, enrolled, courses, progress } = this.props.user;
 
+  
   if(!enrolled || enrolled === null) {
     courseBrowse = <NavBarLink name={offeredTypes.name} path={offeredTypes.path} onClick={() => this.setCourseListView()} />
     isEnrolled = <h2>You are currently not enrolled in any dance courses. Click here to view a list of our offered courses!</h2>
   }
-
+  
   else if(enrolled) {
     let { style, teacher, details: { schedule, length, difficulty } } = this.props.user.courses[0];
     let classes = length * schedule.length
+    
+    courseProgress = !progress >= 1 ?
+        (`You have not yet started this ${length} week course.`) :
+       (`You have currently completed ${progress} out of ${classes} classes in a ${length} week course.`);
 
     isEnrolled = (
       <div className="userInfo">
         <h2>You are currently enrolled in our {style} dance course!</h2>
         <p>Current teacher: {teacher}</p>
-        <p className="courseProgress">You have currently completed {progress} out of {classes} classes in a {length} week course.</p>
-        <p>Difficulty Rating: {difficulty}</p>
+        <p className="courseProgress">{courseProgress}</p>
+        <p>Rated difficulty of {difficulty} out of 5.</p>
       </div>
       )
    
@@ -54,7 +60,7 @@ export class Dashboard extends React.Component {
       return (
         <div className="dashboard">
           <h1 className="dashboardTitle">
-            Dashing Board, Idn't It, Huggaburgh?!
+            
             Welcome to your homePage!
           </h1>
             <div className="courseProgress">
