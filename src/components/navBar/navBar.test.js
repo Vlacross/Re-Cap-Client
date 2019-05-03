@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import ConnectedHeaderNav,  {HeaderNav } from './navBar';
 
-const auth = () => ({auth: {user: 'Defined'}});
-const antiAuth = () => ({auth: {user: null}});
+const auth = () => ({auth: {user: 'Defined'}, views: { isMobile: true } });
+const antiAuth = () => ({auth: {user: null}, views: { isMobile: true } });
 
 let mockStore = configureMockStore();
 let storeWithTrue = mockStore(auth);
