@@ -9,6 +9,7 @@ import { setToken, refreshToken } from './actions/authActions';
 import  staticReducer  from './reducers/staticReducer';
 import courseReducer from './reducers/courses';
 import authReducer from './reducers/auth';
+import viewsReducer from './reducers/views';
 
 
 
@@ -20,7 +21,8 @@ const store = createStore(
   bio: staticReducer,
 courses: courseReducer,
 auth: authReducer,
-form: formReducer
+form: formReducer,
+views: viewsReducer
 }),
   applyMiddleware(thunk)
 );

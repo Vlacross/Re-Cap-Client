@@ -1,0 +1,38 @@
+.hamburger {
+  border-radius: 12%;
+  height: 40px;
+  width: 40px;
+  border: 2px solid black;
+  background: rgba(0, 0, 0, 0.721);
+  display: none;
+ justify-content: space-around;
+ transform: rotate(90deg);
+  transition-duration: 500ms;
+}
+
+.hamburger:hover {
+  background: white;
+}
+
+.hamburger:hover > .burger-line {
+  background: rgba(0, 0, 0, 0.721);
+}
+
+.burger-line {
+  border-radius: 12%;
+  border: 2px solid white;
+  width: 25%;
+  background: white;
+  /* height: 25%; */
+}
+
+
+@media only screen and (max-width: 600px) {
+
+  .hamburger {
+    display: flex;
+  }
+
+}
+
+
