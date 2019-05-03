@@ -14,6 +14,7 @@
   height: 100%;
   padding: 14px;
   justify-content: space-evenly;
+  align-items: center;
   margin: 0 4px 0 4px;
   border-radius: 0px 0px 8px 8px;
   box-shadow: 0 0 15px grey;
@@ -45,13 +46,22 @@
   font: inherit;
   text-decoration: underline;
   cursor: pointer;
+  flex: 1;
   }
-
+/* .logoutButton {
+    color: rgb(90, 30, 35);
+    cursor: pointer;
+    text-decoration: underline;
+    flex: 1;
+  }
+   */
 
   @media only screen and (max-width: 600px) {
     .navWrapper {
       left: unset;
-      
+      border-radius: 8px;
+      background: rgba(2, 2, 2, 0.32);
+      height: 60px;
     }
     
     .Navbar {
@@ -75,8 +85,29 @@
       justify-content: space-evenly;
       margin: 0 4px 0 4px;
       border-radius: 0px 0px 8px 8px;
-      box-shadow: 0 0 15px grey;
+      /* box-shadow: 0 0 15px grey; */
       background: rgba(255, 255, 255, 0.2);
+    }
+
+    .logoutButton {
+      color: rgb(90, 30, 35);
+      border-radius: 5px;
+      box-shadow: 0 0 15px silver;
+      padding: 4px;
+      margin: 14px;
+      transition-duration: 500ms;             
+      cursor: pointer;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+      width:  90%;
+
+    }
+  
+    .logoutButton:hover {
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.517) inset;
     }
   
   }
@@ -99,7 +130,7 @@
 
     .navWrapper {
       position: unset;
-     margin: 0px 0px 20px 0px;
+      margin: 0px 0px 10px 0px;
     }
   }
   
