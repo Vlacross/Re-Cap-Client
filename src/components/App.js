@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 // import logo from '../logo.svg';
+import { setIsMobile } from '../actions/viewActions';
 
 import Login from './loginForm/loginForm';
 import Header from './navBar/navBar';
@@ -10,15 +11,16 @@ import OurStory from './about/ourStory';
 import OfferedTypes from './courses/courses';
 import Enroll from './enrollForm/enrollForm';
 import Dashboard from './dashboard/dashboard';
+import Hamburger from './hamburger/hamburger';
 
 import './App.css';
 
 class App extends Component {
   
-  
+
+
 
   
-
   render() {
 
     return (
