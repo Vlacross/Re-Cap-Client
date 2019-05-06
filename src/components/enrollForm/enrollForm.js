@@ -90,13 +90,13 @@ export class EnrollForm extends React.Component {
       validate={[required, notEmpty, trimmed,  minLength, maxLength, isLower, passMatch]} 
       />
 
-   
-    <button
-      type="submit"
-      disabled={pristine || submitting || invalid}>
-       Submit
-    </button>
-  
+    <div className="formInput">
+      <button
+        type="submit"
+        disabled={pristine || submitting || invalid}>
+        Submit
+      </button>
+    </div>
 
     </form>
   )      

@@ -5,7 +5,7 @@ import { Redirect } from 'react-router';
 
 import Input from '../input/input';
 import { authFetch } from '../../actions'
-import { required, notEmpty, trimmed, lengthMax, lengthMin } from '../../validators';
+import { required, notEmpty, trimmed, lengthMax, lengthMin, isLower } from '../../validators';
 import dashboardRedirect from '../checkAuth/dashboardRedirect';
 
 
@@ -45,7 +45,7 @@ export class LoginForm extends React.Component {
       type="text"
       component={Input}
       label="Username" 
-      validate={[required, notEmpty, trimmed, minLength, maxLength]} />
+      validate={[required, notEmpty, trimmed, minLength, maxLength, isLower]} />
 
 
     
@@ -54,11 +54,11 @@ export class LoginForm extends React.Component {
       type="text"
       component={Input}
       label="Password"
-      validate={[required, notEmpty, trimmed, minLength, maxLength]} />
+      validate={[required, notEmpty, trimmed, minLength, maxLength, isLower]} />
 
-      <button
-      type="submit"> Submit</button>
-
+    <div className="formInput">
+      <button type="submit"> Submit</button>
+    </div>
      
 
     </form>
