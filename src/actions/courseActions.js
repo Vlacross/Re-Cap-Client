@@ -88,7 +88,7 @@ export const signUp = (load) => (dispatch) => {
     if(data.type === 'error') { return Promise.reject(data) } 
     console.log('single', data)
     dispatch(refreshToken())
-    
+    dispatch(offeredCourses())
   })
   .catch(err => {
     console.log(err)
@@ -108,6 +108,49 @@ export const signUp = (load) => (dispatch) => {
   })
 }
 
+
+export const dropOut = (load) => (dispatch) => {
+
+  const { course, user, token } = load
+  console.log(load)
+
+  dispatch(offeredCourses())
+  
+  const options = {
+    method: 'put',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({user: user})
+  }
+
+  return fetch(`${API_URI}courses/remove/${course}`, options)
+  .then(res => normalizeResponse(res))
+  .then(data => {
+    if(data.type === 'error') { return Promise.reject(data) } 
+    console.log('single', data)
+    dispatch(refreshToken())
+    
+  })
+  .catch(err => {
+    console.log(err)
+    let msg;
+    switch(err.code) {
+      case 451:
+        msg = err.message;
+        break;
+      case 11000:
+        msg = 'Username already in use, pick something else';
+        break;
+      default:
+        msg = 'Something went wrong, try again!';
+    }
+    console.log(msg)
+    dispatch(fetchCoursesError(msg))
+  })
+}
 
 /*code: 451,
         message: "User is already enrolled in this course!" */

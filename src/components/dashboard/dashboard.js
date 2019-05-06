@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NavBarLink from '../navBar/navBarLink';
-import { setDisplayView } from '../../actions/courseActions';
+import { setDisplayView, dropOut } from '../../actions/courseActions';
 import checkAuth from '../checkAuth/checkAuth';
+import { doubleCheck } from '../../actions/viewActions';
+import DoubleCheck from './doubleCheck';
 import './dashboard.css';
 
 export class Dashboard extends React.Component {
@@ -14,6 +16,44 @@ export class Dashboard extends React.Component {
   setCourseListView() {
     this.props.dispatch(setDisplayView(null))
    }
+
+   handleDropOutPrompt() {
+
+    let status = {
+      checkingFor: 'dropOut'
+    }
+    this.props.dispatch(doubleCheck(status))
+   }
+
+   clearDropOutPrompt() {
+
+    let status = {
+      checkingFor: ''
+    }
+    this.props.dispatch(doubleCheck(status))
+   }
+
+   dropOut() {
+    
+   }
+
+   handleClick(type) {
+
+    switch(type) {
+      case 'dropOut':
+      let load = {
+      course: this.props.user.courses[0].id,
+      user: this.props.user.id, 
+      token: this.props.state.auth.token
+      }
+      this.props.dispatch(dropOut(load))
+      this.clearDropOutPrompt();
+      break;
+      case 'back':
+      this.clearDropOutPrompt();
+      break;
+    }
+   }
   
   render() {
 
@@ -22,6 +62,7 @@ export class Dashboard extends React.Component {
       path: "/offeredTypes"
     }
 
+    let doubleCheckResponse;
     let isEnrolled;
     let courseBrowse;
     let courseProgress;
@@ -45,20 +86,25 @@ export class Dashboard extends React.Component {
         (`You have not yet started this ${length} week course.`) :
        (`You have currently completed ${progress} out of ${classes} classes in a ${length} week course.`);
 
+    doubleCheckResponse = !this.props.doubleCheck.isOpen ?
+      undefined :
+      (<DoubleCheck onClick={(type) => this.handleClick(type)} style={style} checkingFor={this.props.doubleCheck.checkingFor} />)
+      
+
     isEnrolled = (
       <div className="userInfo">
         <h2>You are currently enrolled in our {style} dance course!</h2>
+        <button name="dropOut" className="dropOut" onClick={() => this.handleDropOutPrompt()}>Drop Out</button>
+        {doubleCheckResponse}
         <p>Current teacher: {teacher}</p>
         <p className="courseProgress">{courseProgress}</p>
         <p>Rated difficulty of {difficulty} out of 5.</p>
       </div>
       )
-   
-  }
-
-
-      return (
-        <div className="dashboard">
+    }
+    
+    return (
+      <div className="dashboard">
           <h1 className="dashboardTitle">
             
             Welcome to your homePage!
@@ -82,7 +128,8 @@ export class Dashboard extends React.Component {
 
 const mapStateToProps = state => ({
   state: state,
-  user: state.auth.user
+  user: state.auth.user,
+  doubleCheck: state.views.doubleCheck
 });
 
 export default checkAuth()(connect(mapStateToProps)(Dashboard));

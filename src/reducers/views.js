@@ -1,5 +1,5 @@
 /*import actions from actions file */
-import { SET_ISMOBILE, TOGGLE_MENU } from '../actions/viewActions'
+import { SET_ISMOBILE, TOGGLE_MENU, SET_DOUBLECHECK } from '../actions/viewActions'
 
 
 
@@ -7,7 +7,11 @@ import { SET_ISMOBILE, TOGGLE_MENU } from '../actions/viewActions'
 
 let initialState = {
   isMobile: false,
-  menuOpen: false
+  menuOpen: false,
+  doubleCheck: {
+    isOpen: false,
+    checkingFor: ''
+  }
  
 }
 
@@ -24,7 +28,16 @@ export default function viewsReducer(state = initialState, action) {
       menuOpen: !state.menuOpen
     })
   }
-console.log(state)
+  if(action.type === SET_DOUBLECHECK) {
+    console.log(action)
+    return Object.assign({}, state, {
+      doubleCheck: {
+        isOpen: !state.doubleCheck.isOpen,
+        checkingFor: action.checkingFor.checkingFor
+    }
+    })
+  }
+// console.log(state)
   return state;
 };
 

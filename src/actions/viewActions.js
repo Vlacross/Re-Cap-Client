@@ -9,3 +9,10 @@ export const TOGGLE_MENU = 'TOGGLE_MENU';
 export const toggleMenu = () => ({
   type: TOGGLE_MENU
 })
+
+
+export const SET_DOUBLECHECK = 'SET_DOUBLECHECK';
+export const doubleCheck = checkingFor => ({
+  type: SET_DOUBLECHECK,
+  checkingFor
+})
