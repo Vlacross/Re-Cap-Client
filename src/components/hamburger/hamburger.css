@@ -8,6 +8,7 @@
  justify-content: space-around;
  transform: rotate(90deg);
   transition-duration: 500ms;
+  margin-top: 0;
 }
 
 .hamburger:hover {

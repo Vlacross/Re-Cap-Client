@@ -14,10 +14,6 @@
 
 }
 
-div {
-  margin-top: 8px;
-}
-
 .buttonDiv {
   display: flex;
   justify-content: space-evenly;

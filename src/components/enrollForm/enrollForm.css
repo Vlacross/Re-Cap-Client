@@ -4,18 +4,17 @@ input {
 }
 
 .enrollForm {
+  color: white;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
   width: 60%;
   height: 100%;
-  background: rgba(250, 250, 246, 0.714);
-  box-shadow: 0px 0px 40px rgb(90, 30, 35);
+  background: rgba(250, 250, 246, 0.2);
   margin: 10px;
-  border-radius: 8px;
   padding: 40px 0px;
+  overflow-y: scroll;
 }
 
 @media only screen and (max-width: 740px) {

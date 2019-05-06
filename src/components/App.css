@@ -1,14 +1,12 @@
 .App {
   text-align: center;
-  border: solid 1px black;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
   width: 100%;
   padding-top: 75px;
-  border-radius: 12px;
-  background: rgba(169, 163, 145, 0.29);
-  box-shadow: 0 0 35px rgb(169, 163, 145);
+  background: #1e4d22;
 }
 
 label {
@@ -25,7 +23,7 @@ label {
 } */
 
 .App-header {
-  background-color: #282c34;
+  background-color: #326937;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
