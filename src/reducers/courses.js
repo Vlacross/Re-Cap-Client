@@ -19,7 +19,7 @@ export default function courseReducer(state = initialState, action) {
   if(action.type === OFFERED_COURSES) {
     console.log('courses-Action-Triggered')
     return Object.assign({}, state, {
-      loading: true,
+      loading: !state.loading,
       error: null
     })
   }
