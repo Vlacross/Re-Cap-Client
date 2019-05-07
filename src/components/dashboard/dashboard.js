@@ -90,7 +90,6 @@ export class Dashboard extends React.Component {
       undefined :
       (<DoubleCheck onClick={(type) => this.handleClick(type)} style={style} checkingFor={this.props.doubleCheck.checkingFor} />)
       
-
     isEnrolled = (
       <div className="userInfo">
         <h2>You are currently enrolled in our {style} dance course!</h2>
