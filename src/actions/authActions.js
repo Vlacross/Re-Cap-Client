@@ -124,4 +124,57 @@ export const refreshToken = () => (dispatch, getState) => {
 
 }
 
+export const deleteAccount = (load) => (dispatch, getState) => {
+
+  const { course, user, token } = load;
+
+
+  let options = {
+    method: 'put',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({user: user})
+  }
+
+  return fetch(`${API_URI}courses/remove/${course}`, options)
+  .then(res => normalizeResponse(res))
+  .then(() => {
+
+    
+    let id = getState().auth.user.id
+    console.log(id)
+
+    let options = {
+    method: 'delete',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({id: id})
+    }
+
+    return fetch(`${API_URI}accounts/remove`, options)
+    .then(res => normalizeResponse(res))
+    .then(data => {
+      if(data.type === 'error') { return Promise.reject(data) } 
+      console.log('account deleted')
+      dispatch(clearAuth())
+      removeToken()
+    })
+ 
+  })
+ .catch(err => {
+    console.log(err)
+    dispatch(loginRequestFailure(err))
+    dispatch(clearAuth())
+    removeToken()
+ })
+
+
+};
+
 
