@@ -141,9 +141,6 @@ export const dropOut = (load) => (dispatch) => {
       case 451:
         msg = err.message;
         break;
-      case 11000:
-        msg = 'Username already in use, pick something else';
-        break;
       default:
         msg = 'Something went wrong, try again!';
     }
@@ -152,5 +149,3 @@ export const dropOut = (load) => (dispatch) => {
   })
 }
 
-/*code: 451,
-        message: "User is already enrolled in this course!" */
