@@ -29,15 +29,14 @@ export default function viewsReducer(state = initialState, action) {
     })
   }
   if(action.type === SET_DOUBLECHECK) {
-    console.log(action)
     return Object.assign({}, state, {
       doubleCheck: {
         isOpen: !state.doubleCheck.isOpen,
-        checkingFor: action.checkingFor.checkingFor
+        checkingFor: action.checkingFor
     }
     })
-  }
-// console.log(state)
+  }  
+  // console.log(state)
   return state;
 };
 

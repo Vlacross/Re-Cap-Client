@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import NavBarLink from '../navBar/navBarLink';
 import { setDisplayView, dropOut } from '../../actions/courseActions';
+import { deleteAccount } from '../../actions/authActions';
 import checkAuth from '../checkAuth/checkAuth';
 import { doubleCheck } from '../../actions/viewActions';
 import DoubleCheck from './doubleCheck';
@@ -17,19 +18,16 @@ export class Dashboard extends React.Component {
     this.props.dispatch(setDisplayView(null))
    }
 
-   handleDropOutPrompt() {
+   handleDropOutPrompt(type) {
 
-    let status = {
-      checkingFor: 'dropOut'
-    }
-    this.props.dispatch(doubleCheck(status))
+    this.props.dispatch(doubleCheck(type))
    }
 
    clearDropOutPrompt() {
 
     let status = {
       checkingFor: ''
-    }
+      }
     this.props.dispatch(doubleCheck(status))
    }
 
@@ -38,17 +36,33 @@ export class Dashboard extends React.Component {
    }
 
    handleClick(type) {
+    let load;
 
     switch(type) {
-      case 'dropOut':
-      let load = {
-      course: this.props.user.courses[0].id,
-      user: this.props.user.id, 
-      token: this.props.state.auth.token
-      }
+      case 'drop out':
+      load = {
+        course: this.props.user.courses[0].id,
+        user: this.props.user.id, 
+        token: this.props.state.auth.token
+        }
       this.props.dispatch(dropOut(load))
       this.clearDropOutPrompt();
       break;
+
+      case 'delete your account':
+      this.props.dispatch(doubleCheck('completely remove'))
+      this.handleDropOutPrompt('completely remove')
+      break;
+
+      case 'completely remove':
+      load = {
+        course: this.props.user.courses[0].id,
+        user: this.props.user.id, 
+        token: this.props.state.auth.token
+        }
+      this.props.dispatch(deleteAccount(load))
+      break;
+
       case 'back':
       this.clearDropOutPrompt();
       break;
@@ -62,6 +76,10 @@ export class Dashboard extends React.Component {
       path: "/offeredTypes"
     }
 
+
+    let DROP_OUT = 'drop out';
+    let DELETE_ACCOUNT = "delete your account";
+    let COMPLETELY_REMOVE = "completely remove";
     let doubleCheckResponse;
     let isEnrolled;
     let courseBrowse;
@@ -71,6 +89,11 @@ export class Dashboard extends React.Component {
   console.log('Dashing', this.props)
 
   let { firstname, lastname, contact, enrolled, courses, progress } = this.props.user;
+
+
+  doubleCheckResponse = !this.props.doubleCheck.isOpen ?
+        undefined :
+        (<DoubleCheck onClick={(type) => this.handleClick(type)} user={this.props.user} checkingFor={this.props.doubleCheck.checkingFor} />)
 
   
   if(!enrolled || enrolled === null) {
@@ -86,18 +109,16 @@ export class Dashboard extends React.Component {
         (`You have not yet started this ${length} week course.`) :
        (`You have currently completed ${progress} out of ${classes} classes in a ${length} week course.`);
 
-    doubleCheckResponse = !this.props.doubleCheck.isOpen ?
-      undefined :
-      (<DoubleCheck onClick={(type) => this.handleClick(type)} style={style} checkingFor={this.props.doubleCheck.checkingFor} />)
+    
       
     isEnrolled = (
       <div className="userInfo">
         <h2>You are currently enrolled in our {style} dance course!</h2>
-        <button name="dropOut" className="dropOut" onClick={() => this.handleDropOutPrompt()}>Drop Out</button>
-        {doubleCheckResponse}
+        <button name="dropOut" className="dropOut" onClick={() => this.handleDropOutPrompt(DROP_OUT)}>Drop Out</button>
         <p>Current teacher: {teacher}</p>
         <p className="courseProgress">{courseProgress}</p>
         <p>Rated difficulty of {difficulty} out of 5.</p>
+       
       </div>
       )
     }
@@ -112,8 +133,10 @@ export class Dashboard extends React.Component {
             <h2>{firstname} {lastname}</h2>
             <p>{contact}</p>
             <div className="enrolled">
-            {isEnrolled}
-            {courseBrowse}
+              {isEnrolled}
+              {courseBrowse}
+              <button name="accountDelete" className="accountDelete" onClick={() => this.handleDropOutPrompt(DELETE_ACCOUNT)}>Delete Account</button>
+              {doubleCheckResponse}
             
             </div>
               
