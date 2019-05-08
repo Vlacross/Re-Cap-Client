@@ -36,15 +36,18 @@ export class Dashboard extends React.Component {
    }
 
    handleClick(type) {
-    let load;
-
-    switch(type) {
-      case 'drop out':
-      load = {
+    let load = this.props.user.enrolled ? 
+        {
         course: this.props.user.courses[0].id,
         user: this.props.user.id, 
         token: this.props.state.auth.token
+        } : {
+        user: this.props.user.id, 
+        token: this.props.state.auth.token
         }
+
+    switch(type) {
+      case 'drop out':
       this.props.dispatch(dropOut(load))
       this.clearDropOutPrompt();
       break;
@@ -55,11 +58,6 @@ export class Dashboard extends React.Component {
       break;
 
       case 'completely remove':
-      load = {
-        course: this.props.user.courses[0].id,
-        user: this.props.user.id, 
-        token: this.props.state.auth.token
-        }
       this.props.dispatch(deleteAccount(load))
       break;
 

@@ -124,10 +124,9 @@ export const refreshToken = () => (dispatch, getState) => {
 
 }
 
-export const deleteAccount = (load) => (dispatch, getState) => {
+function deleteEnrolled(load, dispatch, getState) {
 
-  const { course, user, token } = load;
-
+  let { user, token, course } = load
 
   let options = {
     method: 'put',
@@ -143,7 +142,6 @@ export const deleteAccount = (load) => (dispatch, getState) => {
   .then(res => normalizeResponse(res))
   .then(() => {
 
-    
     let id = getState().auth.user.id
     console.log(id)
 
@@ -172,9 +170,99 @@ export const deleteAccount = (load) => (dispatch, getState) => {
     dispatch(loginRequestFailure(err))
     dispatch(clearAuth())
     removeToken()
- })
+ }) 
+
 
 
 };
 
+
+
+export const deleteAccount = (load) => (dispatch, getState) => {
+
+ 
+if(load.course) {
+  return deleteEnrolled(load, dispatch, getState)
+}
+else {
+  let { user, token } = load
+
+  let options = {
+  method: 'delete',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`
+  },
+  body: JSON.stringify({id: user})
+  }
+  console.log(options)
+  console.log(user)
+
+//   return fetch(`${API_URI}accounts/remove`, options)
+//   .then(res => normalizeResponse(res))
+//   .then(data => {
+//     if(data.type === 'error') { return Promise.reject(data) } 
+//     console.log('account deleted')
+//     dispatch(clearAuth())
+//     removeToken()
+//   })
+//   .catch(err => {
+//     console.log(err)
+//     dispatch(loginRequestFailure(err))
+//     dispatch(clearAuth())
+//     removeToken()
+
+//  }) 
+}
+};
+
+
+
+/* 
+
+if enrolled-
+firstURI = delete
+firstOP - delOP
+secondURI= null
+secondOP - null
+
+else - 
+firstURI = dropOut
+firstOP - dropOp
+secondURI= delete
+secondOP - delOP
+
+
+let finalBlock =
+.then(data => {
+//       if(data.type === 'error') { return Promise.reject(data) } 
+//       console.log('account deleted')
+//       dispatch(clearAuth())
+//       removeToken()
+//     })
+
+
+catch = 
+.catch(err => {
+//     console.log(err)
+//     dispatch(loginRequestFailure(err))
+//     dispatch(clearAuth())
+//     removeToken()
+//  })
+
+
+fetch(firstURI, firstOP)
+.then()
+.then(() => {
+  if secondURI === nul
+  finalBlock
+  catch
+  else
+    fetch(secondURI, secOP)
+    final
+    catch
+})
+
+*/
 
