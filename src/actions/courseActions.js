@@ -1,14 +1,14 @@
 import  { API_URI } from '../config';
 import {normalizeResponse} from './utils';
 
-import { refreshToken } from './authActions'
+import { refreshToken } from './authActions';
 
 
 
 export const OFFERED_COURSES = 'OFFERED_COURSES';
 export const offeredCourses = () => ({
   type: OFFERED_COURSES
-})
+});
 
 export const FETCH_COURSES_SUCCESS = 'FETCH_COURSES_SUCCESS';
 export const fetchCoursesSuccess = data => ({
@@ -27,24 +27,22 @@ export const SET_DISPLAY_VIEW = 'SET_DISPLAY_VIEW';
 export const setDisplayView = data => ({
   type: SET_DISPLAY_VIEW,
   data
-})
+});
 
 export const CLEAR_ERROR = 'CLEAR_ERROR';
 export const clearError = () => ({
   type: CLEAR_ERROR
-})
+});
 
 /*Courses List Fetch */
 export const fetchCourseData = () => (dispatch) => {
 
-  dispatch(offeredCourses())
-  console.log(`fetching courses`)
+  dispatch(offeredCourses());
 
   return fetch(`${API_URI}courses`)
   .then(res => normalizeResponse(res))
   .then(data => {
-    console.log('acts', data)
-    dispatch(fetchCoursesSuccess(data))
+    dispatch(fetchCoursesSuccess(data));
   })
   .catch(error => {
     dispatch(fetchCoursesError(error))
@@ -59,16 +57,15 @@ export const getCourseInfo = (id) => (dispatch) => {
   return fetch(`${API_URI}courses/details/${id}`)
   .then(res => normalizeResponse(res))
   .then(data => {
-    console.log('single', data)
-    dispatch(setDisplayView(data))
+    dispatch(setDisplayView(data));
   })
 
-}
+};
 
 /*Dance Course SignUp */
 export const signUp = (load) => (dispatch) => {
 
-  const { course, user, token } = load
+  const { course, user, token } = load;
 
   dispatch(offeredCourses())
   
@@ -85,8 +82,7 @@ export const signUp = (load) => (dispatch) => {
   return fetch(`${API_URI}courses/signup/${course}`, options)
   .then(res => normalizeResponse(res))
   .then(data => {
-    if(data.type === 'error') { return Promise.reject(data) } 
-    console.log('single', data)
+    if(data.type === 'error') { return Promise.reject(data) } ;
     dispatch(refreshToken())
     dispatch(offeredCourses())
   })
@@ -102,17 +98,15 @@ export const signUp = (load) => (dispatch) => {
         break;
       default:
         msg = 'Something went wrong, try again!';
-    }
-    console.log(msg)
+    };
     dispatch(fetchCoursesError(msg))
   })
-}
+};
 
 
 export const dropOut = (load) => (dispatch) => {
 
-  const { course, user, token } = load
-  console.log(load)
+  const { course, user, token } = load;
 
   dispatch(offeredCourses())
   
@@ -129,8 +123,7 @@ export const dropOut = (load) => (dispatch) => {
   return fetch(`${API_URI}courses/remove/${course}`, options)
   .then(res => normalizeResponse(res))
   .then(data => {
-    if(data.type === 'error') { return Promise.reject(data) } 
-    console.log('single', data)
+    if(data.type === 'error') { return Promise.reject(data) } ;
     dispatch(refreshToken())
     
   })
@@ -144,8 +137,7 @@ export const dropOut = (load) => (dispatch) => {
       default:
         msg = 'Something went wrong, try again!';
     }
-    console.log(msg)
-    dispatch(fetchCoursesError(msg))
+    dispatch(fetchCoursesError(msg));
   })
-}
+};
 

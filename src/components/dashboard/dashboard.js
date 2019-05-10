@@ -48,22 +48,24 @@ export class Dashboard extends React.Component {
 
     switch(type) {
       case 'drop out':
-      this.props.dispatch(dropOut(load))
-      this.clearDropOutPrompt();
-      break;
+        this.props.dispatch(dropOut(load))
+        this.clearDropOutPrompt();
+        break;
 
       case 'delete your account':
-      this.props.dispatch(doubleCheck('completely remove'))
-      this.handleDropOutPrompt('completely remove')
-      break;
+        this.props.dispatch(doubleCheck('completely remove'))
+        this.handleDropOutPrompt('completely remove')
+        break;
 
       case 'completely remove':
-      this.props.dispatch(deleteAccount(load))
-      break;
+        this.props.dispatch(deleteAccount(load))
+        break;
 
       case 'back':
-      this.clearDropOutPrompt();
-      break;
+        this.clearDropOutPrompt();
+        break;
+      default:
+      this.clearDropOutPrompt()
     }
    }
   
@@ -77,7 +79,6 @@ export class Dashboard extends React.Component {
 
     let DROP_OUT = 'drop out';
     let DELETE_ACCOUNT = "delete your account";
-    let COMPLETELY_REMOVE = "completely remove";
     let doubleCheckResponse;
     let isEnrolled;
     let courseBrowse;
@@ -86,7 +87,7 @@ export class Dashboard extends React.Component {
 
   console.log('Dashing', this.props)
 
-  let { firstname, lastname, contact, enrolled, courses, progress } = this.props.user;
+  let { firstname, lastname, contact, enrolled, progress } = this.props.user;
 
 
   doubleCheckResponse = !this.props.doubleCheck.isOpen ?

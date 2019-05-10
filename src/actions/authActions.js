@@ -43,7 +43,6 @@ export const loginRequestFailure = error => ({
 const storeAuth = (token, dispatch) => {
   
   const decodedToken = jwtDecode(token);
-  // console.log('storing-39', decodedToken)
   dispatch(setToken(token, decodedToken.user))
   dispatch(loginRequestSuccess())
   storeToken(token)
@@ -55,8 +54,6 @@ export const authFetch = (values) => (dispatch) => {
   let credentials = distinguishAuthFormat(values)
   let { load, route } = credentials
 
-  // console.log('creds-51', credentials)
-
  const options = {
   method: 'post',
   headers: {
@@ -67,15 +64,10 @@ export const authFetch = (values) => (dispatch) => {
 }
 
   dispatch(loginRequestLoading())
-  console.log(`fetching from ${API_URI}login${route}--63`)
-  // console.log(process.env.REACT_APP_API_URI)
-
    
   return fetch(`${API_URI}login${route}`, options)
   .then(res => normalizeResponse(res))
-  .then(token => {
-    // console.log('postFetch -64', token)
-    // if(token.errmsg) { console.log('return Promise.reject(token)') } 
+  .then(token => { 
     storeAuth(token, dispatch)
   })
   .catch(error => {
@@ -99,7 +91,6 @@ export const authFetch = (values) => (dispatch) => {
 export const refreshToken = () => (dispatch, getState) => {
 
   dispatch(loginRequestLoading());
-  console.log('refrefre')
 
   let token = getState().auth.token
 
@@ -143,7 +134,6 @@ function deleteEnrolled(load, dispatch, getState) {
   .then(() => {
 
     let id = getState().auth.user.id
-    console.log(id)
 
     let options = {
     method: 'delete',
@@ -158,8 +148,7 @@ function deleteEnrolled(load, dispatch, getState) {
     return fetch(`${API_URI}accounts/remove`, options)
     .then(res => normalizeResponse(res))
     .then(data => {
-      if(data.type === 'error') { return Promise.reject(data) } 
-      console.log('account deleted')
+      if(data.type === 'error') { return Promise.reject(data) }
       dispatch(clearAuth())
       removeToken()
     })
@@ -199,70 +188,21 @@ else {
   console.log(options)
   console.log(user)
 
-//   return fetch(`${API_URI}accounts/remove`, options)
-//   .then(res => normalizeResponse(res))
-//   .then(data => {
-//     if(data.type === 'error') { return Promise.reject(data) } 
-//     console.log('account deleted')
-//     dispatch(clearAuth())
-//     removeToken()
-//   })
-//   .catch(err => {
-//     console.log(err)
-//     dispatch(loginRequestFailure(err))
-//     dispatch(clearAuth())
-//     removeToken()
+  return fetch(`${API_URI}accounts/remove`, options)
+  .then(res => normalizeResponse(res))
+  .then(data => {
+    if(data.type === 'error') { return Promise.reject(data) } 
+    console.log('account deleted')
+    dispatch(clearAuth())
+    removeToken()
+  })
+  .catch(err => {
+    console.log(err)
+    dispatch(loginRequestFailure(err))
+    dispatch(clearAuth())
+    removeToken()
 
-//  }) 
+ }) 
 }
 };
-
-
-
-/* 
-
-if enrolled-
-firstURI = delete
-firstOP - delOP
-secondURI= null
-secondOP - null
-
-else - 
-firstURI = dropOut
-firstOP - dropOp
-secondURI= delete
-secondOP - delOP
-
-
-let finalBlock =
-.then(data => {
-//       if(data.type === 'error') { return Promise.reject(data) } 
-//       console.log('account deleted')
-//       dispatch(clearAuth())
-//       removeToken()
-//     })
-
-
-catch = 
-.catch(err => {
-//     console.log(err)
-//     dispatch(loginRequestFailure(err))
-//     dispatch(clearAuth())
-//     removeToken()
-//  })
-
-
-fetch(firstURI, firstOP)
-.then()
-.then(() => {
-  if secondURI === nul
-  finalBlock
-  catch
-  else
-    fetch(secondURI, secOP)
-    final
-    catch
-})
-
-*/
 

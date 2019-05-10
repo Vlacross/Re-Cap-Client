@@ -11,7 +11,6 @@ import OurStory from './about/ourStory';
 import OfferedTypes from './courses/courses';
 import Enroll from './enrollForm/enrollForm';
 import Dashboard from './dashboard/dashboard';
-import Hamburger from './hamburger/hamburger';
 
 import './App.css';
 

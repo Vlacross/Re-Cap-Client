@@ -1,7 +1,6 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router';
 
 import Input from '../input/input';
 import { authFetch } from '../../actions'
@@ -25,7 +24,7 @@ export class LoginForm extends React.Component {
   render() {
       
 
-      const {  handleSubmit, pristine, reset, submitting } = this.props
+      const {  handleSubmit, pristine, submitting } = this.props
 
     
     
@@ -57,7 +56,11 @@ export class LoginForm extends React.Component {
       validate={[required, notEmpty, trimmed, minLength, maxLength, isLower]} />
 
     <div className="formInput">
-      <button type="submit"> Submit</button>
+      <button
+       type="submit"
+       disabled={pristine || submitting}>
+        Submit
+    </button>
     </div>
      
 

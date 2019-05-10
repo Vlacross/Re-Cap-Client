@@ -1,8 +1,5 @@
 import React from 'react';
 
-// import './singleCourse.css'
-
-
 export default function DoubleCheck( { onClick, user, checkingFor } ) { 
 
 
@@ -15,17 +12,19 @@ export default function DoubleCheck( { onClick, user, checkingFor } ) {
 
   switch(checkingFor) {
     case DROP_OUT:
-    response = <h1>are you sure you want to {DROP_OUT} of the {user.courses[0].style} course?</h1>;
-    button = <button onClick={() => onClick(DROP_OUT)}>Drop Out</button>
-    break;
+      response = <h1>are you sure you want to {DROP_OUT} of the {user.courses[0].style} course?</h1>;
+      button = <button onClick={() => onClick(DROP_OUT)}>Drop Out</button>
+      break;
     case DELETE_ACCOUNT:
-    response = (<h1>are you sure you want to {DELETE_ACCOUNT}?</h1>);
-    button = <button onClick={() => onClick(DELETE_ACCOUNT)}>Delete</button>
-    break;
+      response = (<h1>are you sure you want to {DELETE_ACCOUNT}?</h1>);
+      button = <button onClick={() => onClick(DELETE_ACCOUNT)}>Delete</button>
+      break;
     case COMPLETELY_REMOVE:
-    response = (<h1>Pressing Delete will {COMPLETELY_REMOVE} your account!</h1>);
-    button = <button onClick={() => onClick(COMPLETELY_REMOVE)}>Delete</button>
-    break;
+      response = (<h1>Pressing Delete will {COMPLETELY_REMOVE} your account!</h1>);
+      button = <button onClick={() => onClick(COMPLETELY_REMOVE)}>Delete</button>
+      break;
+    default:
+    response = (<h1>This is an error in the wiring of this site, press back or refresh the page!</h1>);
   }
 
   
