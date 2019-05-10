@@ -16,3 +16,8 @@ export const doubleCheck = checkingFor => ({
   type: SET_DOUBLECHECK,
   checkingFor
 })
+
+export const TOGGLE_APP_INFO = "TOGGLE_APP_INFO";
+export const toggleAppInfo = () => ({
+  type: TOGGLE_APP_INFO
+})

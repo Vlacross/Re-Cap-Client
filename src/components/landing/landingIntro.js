@@ -10,7 +10,17 @@ export default function LandingIntro(props) {
 
   return (
     <div className="landingIntro">
-      <h1>Learn To Dance</h1>
+      <h1 className="introBanner">Learn To Dance</h1>
+
+      <label>
+        <button
+          className="appInfo"
+          name="appInfo"
+          onClick={() => props.onClick()}>
+          Find Out More!
+        </button>
+      </label>
+
       <label>
         <Link
           className="introLink"

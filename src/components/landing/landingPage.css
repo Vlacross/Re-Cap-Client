@@ -1,25 +1,25 @@
 .landingPage {
   color: rgb(255, 255, 255);
-  height: 80vh;
   background: linear-gradient(
     rgba(255, 255, 255, 0.25),
     rgba(255, 255, 255, 0.25)
-  ),
-  url("./images/dontz.jpg"), no-repeat center;
+  );
   background-size: 100%;
-  max-width: 700px;
+  width: 60%;
   margin: 10px;
   border-radius: 8px;
   padding: 40px;
   
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 740px) {
+
   .landingPage {
-      background-size: cover;
-
-      background-position: 45% 0px;
-      
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
   }
-}
 
+ 
+}
