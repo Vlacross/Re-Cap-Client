@@ -14,7 +14,7 @@ import './landingPage.css';
   console.log(props.appInfoOpen)
   return (
     <div className="landingPage">
-      <LandingIntro onClick={() => props.dispatch(toggleAppInfo())}/>
+      <LandingIntro appInfoOpen={props.appInfoOpen} onClick={() => props.dispatch(toggleAppInfo())}/>
     </div>
   );
 
