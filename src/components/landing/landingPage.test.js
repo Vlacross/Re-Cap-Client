@@ -5,12 +5,14 @@ import ConnectedLandingPage, { LandingPage } from './landingPage';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 
-const auth = () => ({auth: {user: 'Defined'}});
-const antiAuth = () => ({auth: {user: null}});
+const auth = () => ({auth: {user: 'Defined'}, views: {appInfo: false} });
+const antiAuth = () => ({auth: {user: null}, views: {appInfo: false}});
+
 
 let mockStore = configureMockStore();
 let storeWithTrue = mockStore(auth);
 let storeWithFalse = mockStore(antiAuth);
+
 
 describe('landingPage Component unwrapped', () => {
 

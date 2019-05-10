@@ -41,7 +41,7 @@ describe('landingPage Component', () => {
 	
 		const wrapper = shallow(<LandingIntro />)
 	
-		expect(wrapper.props().children.length).toBe(3)
+		expect(wrapper.props().children.length).toBe(5)
 		expect(wrapper.find('.landingIntro').length).toBe(1)
 		expect(wrapper.find('.introLink').length).toBe(2)
 	
