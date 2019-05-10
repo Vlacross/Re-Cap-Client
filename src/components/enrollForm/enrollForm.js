@@ -92,6 +92,7 @@ export class EnrollForm extends React.Component {
 
     <div className="formInput">
       <button
+      className="enrollButton"
         type="submit"
         disabled={pristine || submitting || invalid}>
         Submit

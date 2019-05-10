@@ -57,6 +57,7 @@ export class LoginForm extends React.Component {
 
     <div className="formInput">
       <button
+      className="loginButton"
        type="submit"
        disabled={pristine || submitting}>
         Submit
