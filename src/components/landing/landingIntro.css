@@ -50,10 +50,15 @@ label {
   color: white;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.7);
+  /* background: rgba(255, 255, 255, 0.79); */
+  background: rgba(59, 90, 63, 0.79);
 }
 
 .appInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   width: 80%;
   height: 80%;
   background: #326937b8;
