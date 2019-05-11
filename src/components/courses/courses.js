@@ -39,7 +39,7 @@ export class OfferedTypes extends React.Component {
 
   render() {
 
-  const { courseList, singleCourse, course, loggedIn, enrolled, error, loading } = this.props;
+  const { courseList, singleCourse, course, loggedIn, user, enrolled, error, loading } = this.props;
 
   if(error) {
     return (
@@ -68,7 +68,7 @@ export class OfferedTypes extends React.Component {
       <div className="offeredTypes">
        <ul className="coursesList">
         {courseList.map((course, index) => {
-         return( <DanceStyle key={index} onClick={(id) => this.handleToggle(id)} loggedIn={loggedIn} course={course} /> )
+         return( <DanceStyle key={index} onClick={(id) => this.handleToggle(id)} user={user} loggedIn={loggedIn} course={course} /> )
           })
         }
        </ul>
@@ -93,6 +93,7 @@ export class OfferedTypes extends React.Component {
 const mapStateToProps = state => ({
   state: state,
   loggedIn: state.auth.user !== null,
+  user: state.auth.user,
   enrolled: state.auth.user.enrolled,
   course: state.courses.course,
   singleCourse: state.courses.course !== null,

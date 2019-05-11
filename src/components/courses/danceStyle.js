@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import './danceStyle.css'
 
 
-function DanceStyle({ course, onClick, loggedIn }) {
+function DanceStyle({ course, onClick, user, loggedIn }) {
 
 /*use less course details here */
 let handleClick = (e, id) => {
@@ -12,8 +12,7 @@ e.preventDefault();
 onClick(id)
 }
 
-
-let button;
+let offer;
 let title;
 
 if(loggedIn) {
@@ -29,6 +28,9 @@ else if(!loggedIn) {
     </div>
 }
 
+!user.enrolled ?
+offer = <p>Enroll or log in for more info or to sign up for this course!</p> :
+offer = undefined
 
 
 let accepting = course.accepting ? "is" : "is not"
@@ -45,7 +47,7 @@ let accepting = course.accepting ? "is" : "is not"
     </div>
     <p className="danceDescription">{course.description}</p>
     </div>
-    <p>Enroll or log in for more info or to sign up for this course!</p>
+    {offer}
   </li>)
 }
 
