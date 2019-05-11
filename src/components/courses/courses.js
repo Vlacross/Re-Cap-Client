@@ -14,14 +14,13 @@ export class OfferedTypes extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(fetchCourseData())
-    this.props.dispatch(offeredCourses())
 
-  }
+  };
 
   handleToggle(id) {
     console.log('togglingClick', id)
     this.props.dispatch(getCourseInfo(id))
-  }
+  };
 
   handleClick(type, id) {
     let load = {
@@ -32,15 +31,15 @@ export class OfferedTypes extends React.Component {
     type === 'signUp' ?
     this.props.dispatch(signUp(load)) 
     : this.props.dispatch(setDisplayView(null))
-  }
+  };
 
   handleError() {
     this.props.dispatch(clearError())
-  }
+  };
 
   render() {
 
-  const { courseList, singleCourse, course, loggedIn, error, loading } = this.props;
+  const { courseList, singleCourse, course, loggedIn, enrolled, error, loading } = this.props;
 
   if(error) {
     return (
@@ -53,7 +52,7 @@ export class OfferedTypes extends React.Component {
        </ul>
       </div>
     )
-  }
+  };
 
   if(loading) {
     return (
@@ -61,7 +60,7 @@ export class OfferedTypes extends React.Component {
         <h1 className="styleListing">Loading...</h1>
       </div>
     )
-  }
+  };
 
  
   if(!singleCourse) {
@@ -75,13 +74,13 @@ export class OfferedTypes extends React.Component {
        </ul>
       </div>
     ) 
-  }
+  };
  
   
   return(
     <div className="offeredTypes">
       <ul className="coursesList">
-      <SingleCourse course={course} onClick={(type, id) => this.handleClick(type, id)}/>
+      <SingleCourse course={course} enrolled={enrolled} onClick={(type, id) => this.handleClick(type, id)}/>
 
       </ul>
     </div>
@@ -94,6 +93,7 @@ export class OfferedTypes extends React.Component {
 const mapStateToProps = state => ({
   state: state,
   loggedIn: state.auth.user !== null,
+  enrolled: state.auth.user.enrolled,
   course: state.courses.course,
   singleCourse: state.courses.course !== null,
   courseList: state.courses.courseList,

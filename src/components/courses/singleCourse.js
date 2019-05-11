@@ -1,14 +1,21 @@
 import React from 'react';
 import checkAuth from '../checkAuth/checkAuth'
+import { Link } from 'react-router-dom';
 import './singleCourse.css'
 
 
-function SingleCourse( {course, onClick} ) { 
+function SingleCourse( {enrolled, course, onClick} ) { 
 
 /*use more course details here */
-
+console.log(enrolled)
+let button;
 let SIGNUP = 'signUp';
 let BACK = 'back';
+let HOME = 'home';
+
+enrolled ? 
+button = (<Link className="homeLink" to='/dashboard' onClick={() => onClick(BACK, course.id)}>Home</Link>) :
+button = (<button onClick={() => onClick(SIGNUP, course.id)}>signUp</button>)
 
 let accepting = course.accepting ? "is" : "is not"
  
@@ -41,7 +48,7 @@ let accepting = course.accepting ? "is" : "is not"
     <p className="danceDescription">{course.description}</p>
     </div>
     <div className="buttonDiv">
-      <button onClick={() => onClick(SIGNUP, course.id)}>signUp</button>
+      {button}
       <button onClick={() => onClick(BACK, course.id)}>back</button>
     </div>
     
