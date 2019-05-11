@@ -110,6 +110,9 @@ handleMobileMenu() {
       
     <div className={navWrapperClass}>
 
+        <Hamburger onClick={() => this.toggleMobileMenu()}/>
+
+
         <div className="siteName">
           
           <span>
@@ -121,7 +124,6 @@ handleMobileMenu() {
           
         </div>
 
-        <Hamburger onClick={() => this.toggleMobileMenu()}/>
 
         <div className={navBarClass}>
           {home}
