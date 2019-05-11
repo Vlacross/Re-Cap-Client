@@ -113,7 +113,7 @@ export class Dashboard extends React.Component {
     isEnrolled = (
       <div className="userInfo">
         <h2>You are currently enrolled in our {style} dance course!</h2>
-        <button name="dropOut" className="dropOut" onClick={() => this.handleDropOutPrompt(DROP_OUT)}>Drop Out</button>
+        <button name="dropOut" className="dropOut dashboardButton" onClick={() => this.handleDropOutPrompt(DROP_OUT)}>Drop Out</button>
         <p>Current teacher: {teacher}</p>
         <p className="courseProgress">{courseProgress}</p>
         <p>Rated difficulty of {difficulty} out of 5.</p>
@@ -134,7 +134,7 @@ export class Dashboard extends React.Component {
             <div className="enrolled">
               {isEnrolled}
               {courseBrowse}
-              <button name="accountDelete" className="accountDelete" onClick={() => this.handleDropOutPrompt(DELETE_ACCOUNT)}>Delete Account</button>
+              <button name="accountDelete" className="accountDelete dashboardButton" onClick={() => this.handleDropOutPrompt(DELETE_ACCOUNT)}>Delete Account</button>
               {doubleCheckResponse}
             
             </div>
