@@ -73,6 +73,11 @@ handleMobileMenu() {
       path: "/enroll"
     }
 
+    let logOut = {
+      name: "LogOut",
+      path: "/"
+    }
+
     let home;
     let logout;
     let signIn;
@@ -91,7 +96,7 @@ handleMobileMenu() {
       if(this.props.loggedIn) {
         console.log('loggedIn')
         home = <NavBarLink name={dashboard.name} path={dashboard.path} onClick={() => this.hydrateUserState()} />
-        logout = <button name="LogOut" className="logoutButton" onClick={() => this.logOut()}>LogOut</button>
+        logout = <NavBarLink name={logOut.name} path={logOut.path} onClick={() => this.logOut()} />
       }
       navBarClass = this.props.menuOpen ?
       "mobileNav" :

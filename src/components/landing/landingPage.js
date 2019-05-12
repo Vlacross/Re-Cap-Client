@@ -11,7 +11,6 @@ import './landingPage.css';
 
  export function LandingPage(props) {
 
-  console.log(props.appInfoOpen)
   return (
     <div className="landingPage">
       <LandingIntro appInfoOpen={props.appInfoOpen} onClick={() => props.dispatch(toggleAppInfo())}/>

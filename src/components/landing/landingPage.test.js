@@ -49,7 +49,6 @@ describe('landingPage Component wrapped in dashBoardRedirect', () => {
 			</Provider>
 		)
 
-		console.log(wrapper.find('.landingPage').length)
 
 		expect(wrapper).toBeDefined()
 		expect(wrapper.find('.landingPage')).toHaveLength(1)

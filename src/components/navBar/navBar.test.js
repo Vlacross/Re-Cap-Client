@@ -18,7 +18,7 @@ let expectedPaths = {
 	'Sign In': '/login',
 	'Enroll': '/enroll',
 	'Home': '/dashboard',
-	'logOut': null
+	'LogOut': '/'
 };
 
 function checkPaths(arr) {
@@ -32,9 +32,7 @@ function checkPaths(arr) {
 			result.push(setPaths[k] === expectedPaths[k])
 		}
 
-		return result.includes(false) ?
-		false :
-		true
+		return !result.includes(false)
 
 };
 
@@ -76,6 +74,8 @@ describe('HeaderNav component without state', () => {
 		expect(links.whichActiveLinks.filter(link => links.expectedLinks.includes(link)).length).toEqual(links.expectedLinks.length)
 		expect(checkPaths(links.activeLinks)).toBeTruthy()
 
+		
+
 	});
 
 	it('renders only certain navLinks based on auth state', () => { 
@@ -97,8 +97,6 @@ describe('HeaderNav component without state', () => {
 
 
 })
-
-
 
 
 
