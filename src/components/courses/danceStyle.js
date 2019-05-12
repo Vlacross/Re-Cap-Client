@@ -28,7 +28,8 @@ else if(!loggedIn) {
     </div>
 }
 
-!user.enrolled ?
+
+!user || !user.enrolled ?
 offer = <p>Enroll or log in for more info or to sign up for this course!</p> :
 offer = undefined
 

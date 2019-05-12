@@ -39,7 +39,7 @@ export class OfferedTypes extends React.Component {
 
   render() {
 
-  const { courseList, singleCourse, course, loggedIn, user, enrolled, error, loading } = this.props;
+  const { courseList, singleCourse, course, loggedIn, user, error, loading } = this.props;
 
   if(error) {
     return (
@@ -80,7 +80,7 @@ export class OfferedTypes extends React.Component {
   return(
     <div className="offeredTypes">
       <ul className="coursesList">
-      <SingleCourse course={course} enrolled={enrolled} onClick={(type, id) => this.handleClick(type, id)}/>
+      <SingleCourse course={course} enrolled={user.enrolled} onClick={(type, id) => this.handleClick(type, id)}/>
 
       </ul>
     </div>
@@ -94,7 +94,6 @@ const mapStateToProps = state => ({
   state: state,
   loggedIn: state.auth.user !== null,
   user: state.auth.user,
-  enrolled: state.auth.user.enrolled,
   course: state.courses.course,
   singleCourse: state.courses.course !== null,
   courseList: state.courses.courseList,
