@@ -3,7 +3,7 @@ import React from 'react';
 import LandingIntro from './landingIntro';
 import dashboardRedirect from '../checkAuth/dashboardRedirect';
 import { connect } from 'react-redux';
-import { toggleAppInfo } from '../../actions/viewActions';
+import { toggleAppInfo } from '../../actions';
 
 
 import './landingPage.css';

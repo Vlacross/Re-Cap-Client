@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchCourseData, offeredCourses, setDisplayView, getCourseInfo, signUp, clearError } from '../../actions';
+import { fetchCourseData, setDisplayView, getCourseInfo, signUp, clearError } from '../../actions';
 import './courses.css'
 
 import SingleCourse from './singleCourse';
@@ -18,7 +18,6 @@ export class OfferedTypes extends React.Component {
   };
 
   handleToggle(id) {
-    console.log('togglingClick', id)
     this.props.dispatch(getCourseInfo(id))
   };
 

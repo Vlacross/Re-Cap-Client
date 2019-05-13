@@ -1,7 +1,7 @@
 import  { API_URI } from '../config';
 import {normalizeResponse} from './utils';
 
-import { refreshToken } from './authActions';
+import { refreshToken } from './auth';
 
 
 

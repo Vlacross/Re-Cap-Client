@@ -1,17 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NavBarLink from '../navBar/navBarLink';
-import { setDisplayView, dropOut } from '../../actions/courseActions';
-import { deleteAccount } from '../../actions/authActions';
+import { setDisplayView, dropOut, deleteAccount, doubleCheck } from '../../actions';
+// import { deleteAccount, doubleCheck } from '../../actions/authActions';
 import checkAuth from '../checkAuth/checkAuth';
-import { doubleCheck } from '../../actions/viewActions';
+// import { doubleCheck } from '../../actions/viewActions';
 import DoubleCheck from './doubleCheck';
 import './dashboard.css';
 
 export class Dashboard extends React.Component {
   
   componentDidMount() {
-    console.log('moutnymountymountbounty')
   }
   
   setCourseListView() {
@@ -85,7 +84,6 @@ export class Dashboard extends React.Component {
     let courseProgress;
     
 
-  console.log('Dashing', this.props)
 
   let { firstname, lastname, contact, enrolled, progress } = this.props.user;
 

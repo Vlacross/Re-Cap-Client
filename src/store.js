@@ -4,9 +4,9 @@ import thunk from 'redux-thunk';
 import jwtDecode from 'jwt-decode';
 
 import { loadToken, storeToken } from './localStorage';
-import { setToken, refreshToken } from './actions/authActions';
+import { setToken, refreshToken } from './actions';
 
-import  staticReducer  from './reducers/staticReducer';
+import  staticReducer  from './reducers/static';
 import courseReducer from './reducers/courses';
 import authReducer from './reducers/auth';
 import viewsReducer from './reducers/views';

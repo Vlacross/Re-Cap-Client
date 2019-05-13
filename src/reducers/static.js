@@ -1,5 +1,5 @@
 /*import actions from actions file */
-import { OUR_STORY } from '../actions/staticActions'
+import { OUR_STORY } from '../actions'
 
 
 
@@ -27,7 +27,6 @@ let initialState = {
 
 export default function staticReducer(state = initialState, action) {
   if(action.type === OUR_STORY) {
-    console.log('Bio-Action-Triggered')
   }
   return state;
 };

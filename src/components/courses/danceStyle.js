@@ -28,10 +28,13 @@ else if(!loggedIn) {
     </div>
 }
 
+if(!user) {
+  offer = <p>Enroll or log in for more info or to sign up for this course!</p>
+}
+else if (!user.enrolled) {
+  offer = <p>To learn more about this course, or to sign up, select the title!</p>
+}
 
-!user || !user.enrolled ?
-offer = <p>Enroll or log in for more info or to sign up for this course!</p> :
-offer = <p>To learn more about this course, or to sign up, select the title!</p>
 
 
 let accepting = course.accepting ? "is" : "is not"

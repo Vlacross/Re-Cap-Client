@@ -185,8 +185,6 @@ else {
   },
   body: JSON.stringify({id: user})
   }
-  console.log(options)
-  console.log(user)
 
   return fetch(`${API_URI}accounts/remove`, options)
   .then(res => normalizeResponse(res))

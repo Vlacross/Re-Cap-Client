@@ -6,12 +6,11 @@ import './singleCourse.css'
 
 function SingleCourse( {enrolled, course, onClick} ) { 
 
-/*use more course details here */
-console.log(enrolled)
+
+
 let button;
 let SIGNUP = 'signUp';
 let BACK = 'back';
-let HOME = 'home';
 
 enrolled ? 
 button = (<Link className="homeLink" to='/dashboard' onClick={() => onClick(BACK, course.id)}>Home</Link>) :

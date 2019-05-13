@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { clearAuth, clearAuthError, refreshToken } from '../../actions/authActions';
-import { setDisplayView } from '../../actions/courseActions';
+import { clearAuth, clearAuthError, refreshToken, setDisplayView, toggleMenu } from '../../actions';
+// import { setDisplayView } from '../../actions/courseActions';
 import { removeToken } from '../../localStorage';
-import { toggleMenu } from '../../actions/viewActions';
+// import { toggleMenu } from '../../actions/viewActions';
 import Hamburger from '../hamburger/hamburger';
 
 
@@ -24,7 +24,6 @@ handleMobileMenu() {
 }
 
  logOut() {
-   console.log('OUT!')
    this.handleMobileMenu()
    this.props.dispatch(clearAuth())
    removeToken()
@@ -86,7 +85,6 @@ handleMobileMenu() {
     let navWrapperClass;
     
       if(!this.props.loggedIn) {
-        console.log('NOTNOTloggedIn')
         signIn = <NavBarLink name={login.name} path={login.path} onClick={() => this.clearAuthError()} />
         signup = <NavBarLink name={enroll.name} path={enroll.path} onClick={() => this.clearAuthError()} />
         
@@ -94,7 +92,6 @@ handleMobileMenu() {
         
       }
       if(this.props.loggedIn) {
-        console.log('loggedIn')
         home = <NavBarLink name={dashboard.name} path={dashboard.path} onClick={() => this.hydrateUserState()} />
         logout = <NavBarLink name={logOut.name} path={logOut.path} onClick={() => this.logOut()} />
       }
@@ -105,11 +102,6 @@ handleMobileMenu() {
       navWrapperClass = this.props.menuOpen ?
       "mobileNavWrapper" :
       "navWrapper"
-
-      
-      console.log(navWrapperClass)
-
-    
 
     return (
       

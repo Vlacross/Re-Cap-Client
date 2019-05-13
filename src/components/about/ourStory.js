@@ -4,8 +4,6 @@ import './ourStory.css';
 
  export function OurStory(props) {
   
-  console.log(props)
-  
   return (
     <div className="ourStory">
       <h4 className="bioText">

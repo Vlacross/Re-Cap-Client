@@ -17,14 +17,14 @@ let initialState = {
 
 export default function courseReducer(state = initialState, action) {
   if(action.type === OFFERED_COURSES) {
-    console.log('courses-Action-Triggered')
+    // console.log('courses-Action-Triggered')
     return Object.assign({}, state, {
       loading: !state.loading,
       error: null
     })
   }
   else if(action.type === FETCH_COURSES_SUCCESS) {
-    console.log('Course-Fetch-Success')
+    // console.log('Course-Fetch-Success')
     return Object.assign({}, state, {
       courseList: action.data,
       error: null,
@@ -32,7 +32,7 @@ export default function courseReducer(state = initialState, action) {
     });
   }
   else if(action.type === FETCH_COURSES_ERROR) {
-    console.log('Course-Fetch_errored') 
+    // console.log('Course-Fetch_errored') 
       return Object.assign({}, state, {
         error: action.error,
         loading: false
@@ -40,7 +40,7 @@ export default function courseReducer(state = initialState, action) {
     
   }
   else if(action.type === CLEAR_ERROR) {
-    console.log('Course-Error-Clear') 
+    // console.log('Course-Error-Clear') 
       return Object.assign({}, state, {
         error: null,
         loading: false
@@ -48,7 +48,7 @@ export default function courseReducer(state = initialState, action) {
     
   }
   else if(action.type === SET_DISPLAY_VIEW) {
-    console.log('switching course display')
+    // console.log('switching course display')
     return Object.assign({}, state, {
       course: action.data,
       loading: false
@@ -59,7 +59,6 @@ export default function courseReducer(state = initialState, action) {
 };
 
 
-//** Will eventually want to write an action to call for fetching classes from DB*/
 
 
 

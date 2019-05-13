@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 // import logo from '../logo.svg';
-import { setIsMobile } from '../actions/viewActions';
+// import { setIsMobile } from '../actions';
 
 import Login from './loginForm/loginForm';
 import Header from './navBar/navBar';

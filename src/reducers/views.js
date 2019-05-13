@@ -1,5 +1,5 @@
 /*import actions from actions file */
-import { SET_ISMOBILE, TOGGLE_MENU, SET_DOUBLECHECK, TOGGLE_APP_INFO } from '../actions/viewActions'
+import { SET_ISMOBILE, TOGGLE_MENU, SET_DOUBLECHECK, TOGGLE_APP_INFO } from '../actions'
 
 
 
@@ -19,7 +19,6 @@ let initialState = {
 
 export default function viewsReducer(state = initialState, action) {
   if(action.type === SET_ISMOBILE) {
-    // console.log('setting ismobile to', action.isMobile)
     return Object.assign({}, state, {
       isMobile: action.isMobile
     })
@@ -42,7 +41,6 @@ export default function viewsReducer(state = initialState, action) {
     }
     })
   }  
-  // console.log(state)
   return state;
 };
 

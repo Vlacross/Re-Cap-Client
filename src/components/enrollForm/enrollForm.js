@@ -20,9 +20,7 @@ export class EnrollForm extends React.Component {
 
     onSubmit(values, dispatch) {
      
-      console.log('valley', values)
       dispatch(authFetch(values))
-      /*eventually write actions sending fetch requests with values */
     };
 
 

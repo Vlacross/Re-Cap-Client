@@ -47,7 +47,6 @@ export default function authReducer(state = initialState, action) {
   }
   else if(action.type === LOGIN_REQUEST_FAILURE) {
     // console.log('loginRequestError fired')
-    console.log(action.error)
     return Object.assign({}, state, {
       error: action.error,
       loading: false
