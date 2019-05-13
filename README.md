@@ -8,11 +8,8 @@
 <ul>
 
 <li><a href="#screenShots">ScreenShots</a></li>
+<li><a href="#apiRoutes">API routes</a></li>
 </ul>
-<<<<<<< HEAD
-<section>
-=======
->>>>>>> d94a056be4c82aab5fd6e54b540a38aa14da4169
 
 
 
@@ -24,7 +21,6 @@
 <h3>Landing Page</h3>
   <img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/siteImages/Landing.jpeg?raw=true" object-fit="contain" alt="app-landingPage-screenshot">
 
-<<<<<<< HEAD
 <h3>App Info</h3>
   <img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/siteImages/AppInfo.jpeg?raw=true" object-fit="contain" alt="app-info-screenshot">
 
@@ -67,9 +63,9 @@
 </section>
 
 
-<section class="">
+<section id="apiRoutes">
 
-<a id="apiRoutes"><h1>API Routes</h1></a>
+<h1>API Routes</h1>
 <a href="#backToTop">Back to the Top</a>
 
 <p>The api for the app has 3 main routes from the server root</p>
@@ -97,30 +93,3 @@
 </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
-<h3>Introduction Page</h3>
-  <img src="" alt="">
-
-<p></p>
-<img src="" alt="">
-
-</section>
-
->>>>>>> d94a056be4c82aab5fd6e54b540a38aa14da4169
