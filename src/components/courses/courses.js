@@ -45,7 +45,7 @@ export class OfferedTypes extends React.Component {
     return (
       <div className="offeredTypes">
        <ul className="coursesList">
-       <h1>{error}</h1>
+       <h1 className="error">{error}</h1>
        
           <button onClick={() => this.handleError()} className="errorButton">Back</button>
       
