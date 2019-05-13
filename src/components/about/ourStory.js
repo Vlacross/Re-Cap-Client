@@ -9,7 +9,6 @@ import './ourStory.css';
   return (
     <div className="ourStory">
       <h4 className="bioText">
-        Hello Then!i
         {props.bio}
       </h4>
     </div>

@@ -4,14 +4,18 @@ import { OUR_STORY } from '../actions/staticActions'
 
 
 const bio = 
-`Dance School started out when the owners wanted to learn to dance
- for their wedding. The went to a few local events and soon found out
- that their location (and jsut about everywhere) has a local
- dance underground network! They found a group of elitist ballroom 
- dancers so they and some friends began learning. Soon there was enough
- popularity they were hosting weekly socials which become popular between towns.
+ `Dance School began with Dave and Lilian wanting to learn to dance
+ for their wedding. After attending a few local events, they soon found out
+ that their own town (among most other places) had an intricate network 
+ revolving dance culture. They befriended a group of elitist ballroom 
+ dancers that saw their ambition and gave them a variety instruction. Soon enough,
+  their friends and family began to feel the influence of their presence at parties,
+  and decided they wouldn't mind learning a few steps themselves. Before long,
+they were hosting weekly socials, attracting attendance from surrounding towns.
  Today Dance school offers several types of dance for a multitude of skill levels, 
- and is an emense resource for dance competitions, events, and techniques. `
+ and is an emense resource for dance competitions, events, and techniques. Today,
+  Dave and Lily use their presence in the local dance culture to give teachers and 
+  interested toe-tappers alike an opportunity to collaborate grow through dancing!`
 
 
 

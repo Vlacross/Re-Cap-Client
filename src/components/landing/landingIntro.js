@@ -15,7 +15,7 @@ export default function LandingIntro(props) {
         <p>
           Welcome to Dance School's online resource for learning how to dance!
           Feel free to browse our list of offered courses, and if you see something
-            you might be interested in, you can enroll in Dance School to Sign Up for a courses
+            you might be interested in, you can enroll in Dance School to Sign Up for a course
             or to simply view more details on each course!
         </p>
         <button className="appInfoButton" onClick={() => props.onClick()}>Back</button>
