@@ -35,6 +35,11 @@ input {
   width: 70%;
 }
 
+.demo {
+  border-top: solid 1px white;
+  border-bottom: solid 1px white;
+}
+
 @media only screen and (max-width: 740px) {
 
   .loginForm {

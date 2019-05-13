@@ -39,6 +39,8 @@ export class LoginForm extends React.Component {
       onSubmit={handleSubmit(this.onSubmit)}>
     {error}
     
+    <div><span className="demo">DemoUser: jonjon</span></div>
+
     <Field 
       name="username"
       type="text"
@@ -46,7 +48,7 @@ export class LoginForm extends React.Component {
       label="Username" 
       validate={[required, notEmpty, trimmed, minLength, maxLength, isLower]} />
 
-
+<div><span className="demo">DemoPassword: unhashed</span></div>
     
     <Field 
       name="password"
