@@ -8,6 +8,7 @@
 <ul>
 
 <li><a href="#screenShots">ScreenShots</a></li>
+<li><a href="#apiRoutes">API routes</a></li>
 </ul>
 
 
@@ -62,9 +63,9 @@
 </section>
 
 
-<section class="">
+<section id="apiRoutes">
 
-<a id="apiRoutes"><h1>API Routes</h1></a>
+<h1>API Routes</h1>
 <a href="#backToTop">Back to the Top</a>
 
 <p>The api for the app has 3 main routes from the server root</p>
