@@ -9,10 +9,6 @@
 
 <li><a href="#screenShots">ScreenShots</a></li>
 </ul>
-<<<<<<< HEAD
-<section>
-=======
->>>>>>> d94a056be4c82aab5fd6e54b540a38aa14da4169
 
 
 
@@ -24,7 +20,6 @@
 <h3>Landing Page</h3>
   <img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/siteImages/Landing.jpeg?raw=true" object-fit="contain" alt="app-landingPage-screenshot">
 
-<<<<<<< HEAD
 <h3>App Info</h3>
   <img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/siteImages/AppInfo.jpeg?raw=true" object-fit="contain" alt="app-info-screenshot">
 
@@ -97,30 +92,3 @@
 </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
-<h3>Introduction Page</h3>
-  <img src="" alt="">
-
-<p></p>
-<img src="" alt="">
-
-</section>
-
->>>>>>> d94a056be4c82aab5fd6e54b540a38aa14da4169
