@@ -16,10 +16,10 @@ export const clearAuth = () => ({
   type: CLEAR_AUTH
 });
 
-export const CLEAR_AUTH_ERROR = 'CLEAR_AUTH_ERROR'
+export const CLEAR_AUTH_ERROR = 'CLEAR_AUTH_ERROR';
 export const clearAuthError = () => ({
   type: CLEAR_AUTH_ERROR
-})
+});
 
 export const LOGIN_REQUEST_LOADING = 'LOGIN_REQUEST_LOADING';
 export const loginRequestLoading = () => ({
@@ -61,7 +61,7 @@ export const authFetch = (values) => (dispatch) => {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify(load)
-}
+  }
 
   dispatch(loginRequestLoading())
    
@@ -85,7 +85,7 @@ export const authFetch = (values) => (dispatch) => {
     }
     dispatch(loginRequestFailure(msg))
   })
-}
+};
 
 
 export const refreshToken = () => (dispatch, getState) => {
@@ -113,7 +113,7 @@ export const refreshToken = () => (dispatch, getState) => {
     removeToken()
   })
 
-}
+};
 
 function deleteEnrolled(load, dispatch, getState) {
 
@@ -170,37 +170,37 @@ function deleteEnrolled(load, dispatch, getState) {
 export const deleteAccount = (load) => (dispatch, getState) => {
 
  
-if(load.course) {
-  return deleteEnrolled(load, dispatch, getState)
-}
-else {
-  let { user, token } = load
-
-  let options = {
-  method: 'delete',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`
-  },
-  body: JSON.stringify({id: user})
+  if(load.course) {
+    return deleteEnrolled(load, dispatch, getState)
   }
+  else {
+    let { user, token } = load
 
-  return fetch(`${API_URI}accounts/remove`, options)
-  .then(res => normalizeResponse(res))
-  .then(data => {
-    if(data.type === 'error') { return Promise.reject(data) } 
-    console.log('account deleted')
-    dispatch(clearAuth())
-    removeToken()
-  })
-  .catch(err => {
-    console.log(err)
-    dispatch(loginRequestFailure(err))
-    dispatch(clearAuth())
-    removeToken()
+    let options = {
+    method: 'delete',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({id: user})
+    }
 
- }) 
-}
+    return fetch(`${API_URI}accounts/remove`, options)
+    .then(res => normalizeResponse(res))
+    .then(data => {
+      if(data.type === 'error') { return Promise.reject(data) } 
+      console.log('account deleted')
+      dispatch(clearAuth())
+      removeToken()
+    })
+    .catch(err => {
+      console.log(err)
+      dispatch(loginRequestFailure(err))
+      dispatch(clearAuth())
+      removeToken()
+
+     }) 
+  }
 };
 

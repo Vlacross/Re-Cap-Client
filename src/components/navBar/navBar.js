@@ -2,13 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { clearAuth, clearAuthError, refreshToken, setDisplayView, toggleMenu } from '../../actions';
-// import { setDisplayView } from '../../actions/courseActions';
 import { removeToken } from '../../localStorage';
-// import { toggleMenu } from '../../actions/viewActions';
 import Hamburger from '../hamburger/hamburger';
 
 
-import NavBarLink from './navBarLink'
+import NavBarLink from './navBarLink';
 import './navBar.css';
 
 export class HeaderNav extends React.Component {
@@ -141,13 +139,13 @@ handleMobileMenu() {
 
   };
 
-}
+};
 
 const mapStateToProps = state => ({
   loggedIn: state.auth.user !== null,
   isMobile: state.views.isMobile,
   menuOpen: state.views.menuOpen
-})
+});
 
-export default connect(mapStateToProps)(HeaderNav)
+export default connect(mapStateToProps)(HeaderNav);
 

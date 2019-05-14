@@ -48,4 +48,4 @@ export const distinguishAuthFormat = v => {
   return len === 2 ?
   login:
   create
-}
+};

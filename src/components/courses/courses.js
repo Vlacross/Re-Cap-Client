@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchCourseData, setDisplayView, getCourseInfo, signUp, clearError } from '../../actions';
-import './courses.css'
+import './courses.css';
 
 import SingleCourse from './singleCourse';
 import DanceStyle from './danceStyle';

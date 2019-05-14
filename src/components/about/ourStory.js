@@ -11,11 +11,11 @@ import './ourStory.css';
       </h4>
     </div>
   );
-}
+};
 
 const mapStateToProps = state => ({
   state: state,
   bio: state.bio.bio
-})
+});
 
 export default connect(mapStateToProps)(OurStory);

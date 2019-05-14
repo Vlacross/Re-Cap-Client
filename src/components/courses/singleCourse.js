@@ -1,7 +1,7 @@
 import React from 'react';
-import checkAuth from '../checkAuth/checkAuth'
+import checkAuth from '../checkAuth/checkAuth';
 import { Link } from 'react-router-dom';
-import './singleCourse.css'
+import './singleCourse.css';
 
 
 function SingleCourse( {enrolled, course, onClick} ) { 
@@ -55,7 +55,7 @@ let accepting = course.accepting ? "is" : "is not"
     </div>
 );
 
-}
+};
 
 
 

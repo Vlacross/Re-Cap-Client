@@ -1,5 +1,5 @@
 /*import actions from actions file */
-import { OUR_STORY } from '../actions'
+import { OUR_STORY } from '../actions';
 
 
 
@@ -15,14 +15,14 @@ they were hosting weekly socials, attracting attendance from surrounding towns.
  Today Dance school offers several types of dance for a multitude of skill levels, 
  and is an emense resource for dance competitions, events, and techniques. Today,
   Dave and Lily use their presence in the local dance culture to give teachers and 
-  interested toe-tappers alike an opportunity to collaborate grow through dancing!`
+  interested toe-tappers alike an opportunity to collaborate grow through dancing!`;
 
 
 
 let initialState = {
   bio: bio
  
-}
+};
 
 
 export default function staticReducer(state = initialState, action) {
@@ -30,11 +30,3 @@ export default function staticReducer(state = initialState, action) {
   }
   return state;
 };
-
-
-
-
-
-
-
-

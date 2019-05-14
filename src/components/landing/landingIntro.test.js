@@ -6,7 +6,7 @@ import LandingIntro from './landingIntro';
 let expectedPaths = {
 	'Sign In': '/login',
 	'Enroll': '/enroll'
-}
+};
 
 let checkPaths = (wrapper) => {
 

@@ -6,13 +6,13 @@ import { authFetch } from '../../actions'
 import { required, notEmpty, trimmed, lengthMax, lengthMin, matches, isLower, validEmailFormat } from '../../validators';
 import dashboardRedirect from '../checkAuth/dashboardRedirect';
 
-import './enrollForm.css'
+import './enrollForm.css';
 
 let minLength = lengthMin(6);
 let maxLength = lengthMax(14);
 let nameMinLength =  lengthMin(2);
 let nameMaxLength = lengthMax(24);
-let passMatch = matches('password')
+let passMatch = matches('password');
 
 
 
@@ -110,25 +110,16 @@ EnrollForm = connect(
     state: state,
     initialValues: state.auth.user,
     error: state.auth.error
-  }))(EnrollForm)
+  }))(EnrollForm);
 
 
 
 EnrollForm = reduxForm({
   form: 'enrollForm',
   onSubmitFail: (errors, dispatch) => dispatch(focus('enroll', 'username'))
-})(EnrollForm)
+})(EnrollForm);
 
-export default  dashboardRedirect()(EnrollForm)
+export default  dashboardRedirect()(EnrollForm);
 
-
-
-// export default reduxForm({
-//   form: 'enrollForm',
-//   onSubmitFail: (errors, dispatch) => console.log(errors)
-// })(EnrollForm)
-
-
-// dispatch(focus('enroll', Object.keys(errors[0])))
 
 /*https://reactjs.org/docs/react-component.html#componentdidupdate -  */

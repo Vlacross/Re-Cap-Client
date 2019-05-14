@@ -13,7 +13,7 @@ const defaultProps = {
 		name: 'inputName',
 		type: 'text'
 	}
-}
+};
 
 it('renders without crashing', () => {
 	

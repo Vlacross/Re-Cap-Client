@@ -1,5 +1,5 @@
 /*import actions from actions file */
-import { SET_ISMOBILE, TOGGLE_MENU, SET_DOUBLECHECK, TOGGLE_APP_INFO } from '../actions'
+import { SET_ISMOBILE, TOGGLE_MENU, SET_DOUBLECHECK, TOGGLE_APP_INFO } from '../actions';
 
 
 
@@ -14,7 +14,7 @@ let initialState = {
     checkingFor: ''
   }
  
-}
+};
 
 
 export default function viewsReducer(state = initialState, action) {

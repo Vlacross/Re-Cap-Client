@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './danceStyle.css'
+import './danceStyle.css';
 
 
 function DanceStyle({ course, onClick, user, loggedIn }) {
@@ -10,7 +10,7 @@ function DanceStyle({ course, onClick, user, loggedIn }) {
 let handleClick = (e, id) => {
 e.preventDefault();
 onClick(id)
-}
+};
 
 let offer;
 let title;
@@ -53,9 +53,9 @@ let accepting = course.accepting ? "is" : "is not"
     </div>
     {offer}
   </li>)
-}
+};
 
 
-export default connect()(DanceStyle)
+export default connect()(DanceStyle);
 
 

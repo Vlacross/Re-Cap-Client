@@ -2,9 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import NavBarLink from '../navBar/navBarLink';
 import { setDisplayView, dropOut, deleteAccount, doubleCheck } from '../../actions';
-// import { deleteAccount, doubleCheck } from '../../actions/authActions';
 import checkAuth from '../checkAuth/checkAuth';
-// import { doubleCheck } from '../../actions/viewActions';
 import DoubleCheck from './doubleCheck';
 import './dashboard.css';
 
@@ -143,7 +141,7 @@ export class Dashboard extends React.Component {
       );
   }
 
-}
+};
 
 const mapStateToProps = state => ({
   state: state,

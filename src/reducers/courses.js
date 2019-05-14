@@ -1,5 +1,5 @@
 /*import actions from actions file */
-import { OFFERED_COURSES, FETCH_COURSES_SUCCESS, FETCH_COURSES_ERROR, SET_DISPLAY_VIEW, CLEAR_ERROR } from '../actions'
+import { OFFERED_COURSES, FETCH_COURSES_SUCCESS, FETCH_COURSES_ERROR, SET_DISPLAY_VIEW, CLEAR_ERROR } from '../actions';
 
 
 
@@ -11,7 +11,7 @@ let initialState = {
   error: null,
   loading: false
  
-}
+};
 
 /*add 'toggleView' prop to state, to switch between displaying the list or single course */
 

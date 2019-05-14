@@ -3,12 +3,12 @@ import { Field, reduxForm, focus } from 'redux-form';
 import { connect } from 'react-redux';
 
 import Input from '../input/input';
-import { authFetch } from '../../actions'
+import { authFetch } from '../../actions';
 import { required, notEmpty, trimmed, lengthMax, lengthMin, isLower } from '../../validators';
 import dashboardRedirect from '../checkAuth/dashboardRedirect';
 
 
-import './loginForm.css'
+import './loginForm.css';
 
 let minLength = lengthMin(4);
 let maxLength = lengthMax(11);
@@ -87,16 +87,14 @@ export class LoginForm extends React.Component {
      LoginForm = reduxForm({
     form: 'loginForm',
     onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
-  })(LoginForm)
+  })(LoginForm);
   
     
     LoginForm = dashboardRedirect()(LoginForm);
   
  
 
-export default LoginForm
-
-// export default checkAuth()(LoginForm)
+export default LoginForm;
 
 
 /*https://reactjs.org/docs/react-component.html#componentdidupdate -  */

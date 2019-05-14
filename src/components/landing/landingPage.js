@@ -18,11 +18,11 @@ import './landingPage.css';
   );
 
 
-}
+};
 
 const mapStateToProps = state => ({
   appInfoOpen: state.views.appInfo
-})
+});
 
 
-export default dashboardRedirect()(connect(mapStateToProps)(LandingPage))
+export default dashboardRedirect()(connect(mapStateToProps)(LandingPage));

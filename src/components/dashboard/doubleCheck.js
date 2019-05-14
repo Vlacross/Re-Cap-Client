@@ -4,8 +4,8 @@ export default function DoubleCheck( { onClick, user, checkingFor } ) {
 
 
   let DROP_OUT = 'drop out';
-  let DELETE_ACCOUNT = "delete your account"
-  let COMPLETELY_REMOVE = "completely remove"
+  let DELETE_ACCOUNT = "delete your account";
+  let COMPLETELY_REMOVE = "completely remove";
   let BACK = 'back';
   let response; 
   let button;
@@ -25,7 +25,7 @@ export default function DoubleCheck( { onClick, user, checkingFor } ) {
       break;
     default:
     response = (<h1>This is an error in the wiring of this site, press back or refresh the page!</h1>);
-  }
+  };
 
   
   return(

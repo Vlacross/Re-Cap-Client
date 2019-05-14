@@ -5,10 +5,10 @@ import { shallow, mount } from 'enzyme';
 
 import OurStoryConnected, { OurStory } from './ourStory';
 
-const bio = () => ({ bio: {bio: 'connected bibliography'} })
+const bio = () => ({ bio: {bio: 'connected bibliography'} });
 
 let mockStore = configureMockStore();
-let store = mockStore(bio)
+let store = mockStore(bio);
 
 describe('OurStory function', () => {
 
@@ -26,12 +26,12 @@ describe('OurStory function', () => {
 	it('renders something', () => {
 		const wrapper = shallow(<OurStoryConnected />)
 		expect(wrapper).toBeDefined()
-	})
+	});
 
 	it('renders something', () => {
 		const wrapper = shallow(<OurStory />)
 		expect(wrapper).toBeDefined()
-	})
+	});
 	
 	it('renders content based on passed props', () => {
 

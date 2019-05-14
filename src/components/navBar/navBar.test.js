@@ -96,7 +96,7 @@ describe('HeaderNav component without state', () => {
 	});
 
 
-})
+});
 
 
 

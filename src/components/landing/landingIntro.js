@@ -57,6 +57,6 @@ export default function LandingIntro(props) {
            
     </div>
   );
-}
+};
 
 
