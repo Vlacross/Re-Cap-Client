@@ -4,14 +4,14 @@
   "private": true,
   "dependencies": {
     "jwt-decode": "^2.2.0",
-    "npm": "^6.9.0",
+    "npm": "^6.10.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^6.0.1",
-    "react-router-dom": "^5.0.0",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "2.1.8",
-    "redux": "^4.0.1",
-    "redux-form": "^8.1.0",
+    "redux": "^4.0.4",
+    "redux-form": "^8.2.4",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
@@ -30,8 +30,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.12.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "redux-mock-store": "^1.5.3"
   }
 }
