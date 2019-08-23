@@ -27,6 +27,10 @@ h4 {
   border-radius: 8px;
 }
 
+.ourStory::-webkit-scrollbar-thumb:active {
+  background: #154e1a50;
+}
+
 .ourStory::-webkit-scrollbar {
   background-color: #7f9c8260;
   border-radius: 8px;
