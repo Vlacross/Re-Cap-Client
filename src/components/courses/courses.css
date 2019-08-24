@@ -21,6 +21,22 @@ ul {
   padding: 0;
 }
 
+.offeredTypes::-webkit-scrollbar-thumb {
+  background: rgba(89, 158, 94, 0.314);
+  box-shadow: 0px 0px 4px white inset;
+  border-radius: 8px;
+}
+
+.offeredTypes::-webkit-scrollbar-thumb:active {
+  background: #3f854594;
+}
+
+.offeredTypes::-webkit-scrollbar {
+  background-color: #7f9c8260;
+  border-radius: 8px;
+}
+
+
 .error {
   color: crimson;
 }
