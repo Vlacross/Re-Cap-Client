@@ -12,12 +12,16 @@ export default function LandingIntro(props) {
    (
      <div className="appInfoWrapper">
       <div className="appInfo">
-        <p>
-          Welcome to Dance School's online resource for learning how to dance!
-          Feel free to browse our list of offered courses, and if you see something
+        <section className="appInfoText">
+          <p>
+            Welcome to Dance School's online resource for learning how to dance!
+          </p>
+          
+          <p>Feel free to browse our list of offered courses, and if you see something
             you might be interested in, you can enroll in Dance School to Sign Up for a course
             or to simply view more details on each course!
-        </p>
+          </p>
+        </section>
         <button className="appInfoButton" onClick={() => props.onClick()}>Back</button>
       </div>
      </div>
