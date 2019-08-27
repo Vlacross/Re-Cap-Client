@@ -31,7 +31,7 @@ const authToken = loadToken();
 const user = !authToken ? null : jwtDecode(authToken).user;
 
 if(authToken) {
-  console.log('authy!', store.getState())
+  // console.log('authy!', store.getState())
   store.dispatch(setToken(authToken, user))
   store.dispatch(refreshToken(authToken))
   storeToken(store.getState().auth.token)

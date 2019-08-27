@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function DoubleCheck( { onClick, user, checkingFor } ) { 
+export default function DoubleCheck( { onClick, user, checkingFor, error } ) { 
 
 
   let DROP_OUT = 'drop out';
@@ -9,6 +9,13 @@ export default function DoubleCheck( { onClick, user, checkingFor } ) {
   let BACK = 'back';
   let response; 
   let button;
+  let protectedAccountErrorTitle;
+  let protectedAccountErrorInfo;
+
+  protectedAccountErrorTitle = (error ?( <h1>{error.title}</h1>) : undefined);
+
+  protectedAccountErrorInfo = error ? (<h3>{error.info}</h3>) : undefined;
+
 
   switch(checkingFor) {
     case DROP_OUT:
@@ -26,14 +33,17 @@ export default function DoubleCheck( { onClick, user, checkingFor } ) {
     default:
     response = (<h1>This is an error in the wiring of this site, press back or refresh the page!</h1>);
   };
+ 
 
   
   return(
     <div className="doubleCheckWrapper">
       <div className="doubleCheck">
-        {response}
+        {!error && response}
+        {error && protectedAccountErrorTitle}
+        {error && protectedAccountErrorInfo}
         <div className="buttonHousing">
-          {button}
+          {!error && button}
           <button className="doubleCheckButton" onClick={() => onClick(BACK)}>Back</button>
         </div>
         

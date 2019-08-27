@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NavBarLink from '../navBar/navBarLink';
-import { setDisplayView, dropOut, deleteAccount, doubleCheck } from '../../actions';
+import { setDisplayView, dropOut, deleteAccount, doubleCheck, clearProtected } from '../../actions';
 import checkAuth from '../checkAuth/checkAuth';
 import DoubleCheck from './doubleCheck';
 import './dashboard.css';
@@ -55,11 +55,12 @@ export class Dashboard extends React.Component {
         break;
 
       case 'completely remove':
-        this.props.dispatch(deleteAccount(load))
+        this.props.dispatch(deleteAccount(load, this.props.protectedAccount))
         break;
 
       case 'back':
         this.clearDropOutPrompt();
+        this.props.dispatch(clearProtected());
         break;
       default:
       this.clearDropOutPrompt()
@@ -77,6 +78,7 @@ export class Dashboard extends React.Component {
     let DROP_OUT = 'drop out';
     let DELETE_ACCOUNT = "delete your account";
     let doubleCheckResponse;
+    let reserved;
     let isEnrolled;
     let courseBrowse;
     let courseProgress;
@@ -88,7 +90,12 @@ export class Dashboard extends React.Component {
 
   doubleCheckResponse = !this.props.doubleCheck.isOpen ?
         undefined :
-        (<DoubleCheck onClick={(type) => this.handleClick(type)} user={this.props.user} checkingFor={this.props.doubleCheck.checkingFor} />)
+        (<DoubleCheck onClick={(type) => this.handleClick(type)} user={this.props.user} checkingFor={this.props.doubleCheck.checkingFor} error={this.props.protectedAccount} />);
+      
+        reserved = this.props.protectedAccount !== null ? 
+        (<DoubleCheck onClick={(type) => this.handleClick(type)} user={this.props.user} checkingFor={this.props.doubleCheck.checkingFor} error={this.props.protectedAccount} />)
+        :
+        undefined;
 
   
   if(!enrolled || enrolled === null) {
@@ -132,6 +139,7 @@ export class Dashboard extends React.Component {
               {courseBrowse}
               <button name="accountDelete" className="accountDelete dashboardButton" onClick={() => this.handleDropOutPrompt(DELETE_ACCOUNT)}>Delete Account</button>
               {doubleCheckResponse}
+              {!this.props.doubleCheck.isOpen && this.props.protectedAccount && reserved}
             
             </div>
               
@@ -146,7 +154,8 @@ export class Dashboard extends React.Component {
 const mapStateToProps = state => ({
   state: state,
   user: state.auth.user,
-  doubleCheck: state.views.doubleCheck
+  doubleCheck: state.views.doubleCheck,
+  protectedAccount: state.auth.protectedAccount
 });
 
 export default checkAuth()(connect(mapStateToProps)(Dashboard));
