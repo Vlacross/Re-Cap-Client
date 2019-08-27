@@ -1,11 +1,12 @@
-import { LOGIN_REQUEST_LOADING, LOGIN_REQUEST_SUCCESS, LOGIN_REQUEST_FAILURE, CLEAR_AUTH_ERROR, SET_TOKEN, CLEAR_AUTH } from '../actions';
+import { LOGIN_REQUEST_LOADING, LOGIN_REQUEST_SUCCESS, LOGIN_REQUEST_FAILURE, CLEAR_AUTH_ERROR, SET_TOKEN, CLEAR_AUTH, PROTECTED_ACCOUNT, CLEAR_PROTECTED } from '../actions';
 
 
 const initialState = {
   token: null,
 user: null,
 loading: false,
-error: null
+error: null,
+protectedAccount: null
 };
 
 
@@ -52,6 +53,17 @@ export default function authReducer(state = initialState, action) {
       loading: false
     })
 
+  }
+  else if(action.type === PROTECTED_ACCOUNT) {
+    console.log('Protected Account Triggered', action.msg)
+    return Object.assign({}, state, {
+      protectedAccount: action.msg
+    })
+  }
+  else if(action.type === CLEAR_PROTECTED) {
+    return Object.assign({}, state, {
+      protectedAccount: null
+    })
   }
 // console.log('auth', Date.now(), state)
 return state

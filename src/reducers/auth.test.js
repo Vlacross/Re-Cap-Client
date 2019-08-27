@@ -9,7 +9,8 @@ describe('authReducer', () => {
     token: null,
   user: null,
   loading: false,
-  error: null
+  error: null,
+  protectedAccount: null
   };
 
   const mockInitialStateLoggedIn = {
