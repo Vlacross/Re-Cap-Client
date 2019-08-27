@@ -2,6 +2,7 @@ import jwtDecode from 'jwt-decode';
 import { API_URI } from '../config';
 import { storeToken, removeToken } from '../localStorage';
 import { normalizeResponse, distinguishAuthFormat } from './utils' ;
+import { doubleCheck } from '../actions';
 
 
 export const SET_TOKEN = 'SET_TOKEN';
@@ -38,6 +39,17 @@ export const loginRequestFailure = error => ({
   type: LOGIN_REQUEST_FAILURE,
   error: error
 });
+
+export const PROTECTED_ACCOUNT = 'PROTECTED_ACCOUNT';
+export const protectedAccount = msg => ({
+  type: PROTECTED_ACCOUNT,
+  msg: msg
+})
+
+export const CLEAR_PROTECTED = 'CLEAR_PROTECTED';
+export const clearProtected = () => ({
+  type: CLEAR_PROTECTED
+})
 
 
 const storeAuth = (token, dispatch) => {
@@ -131,37 +143,40 @@ function deleteEnrolled(load, dispatch, getState) {
 
   return fetch(`${API_URI}courses/remove/${course}`, options)
   .then(res => normalizeResponse(res))
-  .then(() => {
-
-    let id = getState().auth.user.id
-
-    let options = {
-    method: 'delete',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
-    },
-    body: JSON.stringify({id: id})
+  .then(data => {
+    if (data.type === 'protected') {
+      dispatch(protectedAccount(data.message))
+      return Promise.resolve()
     }
+    else {
+      let id = getState().auth.user.id
 
-    return fetch(`${API_URI}accounts/remove`, options)
-    .then(res => normalizeResponse(res))
-    .then(data => {
-      if(data.type === 'error') { return Promise.reject(data) }
-      dispatch(clearAuth())
-      removeToken()
-    })
- 
+      let options = {
+      method: 'delete',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({id: id})
+      }
+  
+      return fetch(`${API_URI}accounts/remove`, options)
+      .then(res => normalizeResponse(res))
+      .then(data => {
+        if(data.type === 'error') { return Promise.reject(data) }
+        dispatch(doubleCheck({checkingFor: ''}))
+        dispatch(clearAuth())
+        removeToken()
+      }) 
+    }
   })
- .catch(err => {
-    console.log(err)
-    dispatch(loginRequestFailure(err))
-    dispatch(clearAuth())
-    removeToken()
- }) 
-
-
+  .catch(err => {
+     console.log(err)
+     dispatch(loginRequestFailure(err))
+     dispatch(clearAuth())
+     removeToken()
+  }) 
 
 };
 
@@ -169,7 +184,6 @@ function deleteEnrolled(load, dispatch, getState) {
 
 export const deleteAccount = (load) => (dispatch, getState) => {
 
- 
   if(load.course) {
     return deleteEnrolled(load, dispatch, getState)
   }
@@ -189,8 +203,15 @@ export const deleteAccount = (load) => (dispatch, getState) => {
     return fetch(`${API_URI}accounts/remove`, options)
     .then(res => normalizeResponse(res))
     .then(data => {
-      if(data.type === 'error') { return Promise.reject(data) } 
-      console.log('account deleted')
+      if (data.type === 'protected') {
+        dispatch(protectedAccount(data.message))
+        return Promise.resolve()
+      }
+      else if(data.type === 'error') {
+        return Promise.reject(data) 
+      }
+
+      dispatch(doubleCheck({checkingFor: ''}))
       dispatch(clearAuth())
       removeToken()
     })
@@ -200,7 +221,8 @@ export const deleteAccount = (load) => (dispatch, getState) => {
       dispatch(clearAuth())
       removeToken()
 
-     }) 
-  }
+     })
+  } 
+  
 };
 

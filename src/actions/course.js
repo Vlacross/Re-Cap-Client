@@ -1,6 +1,6 @@
 import  { API_URI } from '../config';
 import {normalizeResponse} from './utils';
-
+import { protectedAccount } from '../actions';
 import { refreshToken } from './auth';
 
 
@@ -123,7 +123,13 @@ export const dropOut = (load) => (dispatch) => {
   return fetch(`${API_URI}courses/remove/${course}`, options)
   .then(res => normalizeResponse(res))
   .then(data => {
-    if(data.type === 'error') { return Promise.reject(data) } ;
+    if(data.type === 'error') {
+      return Promise.reject(data)
+    }
+    else if (data.type === 'protected') {
+      dispatch(protectedAccount(data.message))
+      return Promise.resolve()
+    }
     dispatch(refreshToken())
     
   })
