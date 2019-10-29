@@ -19,46 +19,42 @@
   <h2>ScreenShots</h2>
 
 <h3>Landing Page</h3>
-  <img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/siteImages/Landing.jpeg?raw=true" object-fit="contain" alt="app-landingPage-screenshot">
+  <img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/n_site_images/Landing.jpeg?raw=true" object-fit="contain" alt="app-landingPage-screenshot">
 
 <h3>App Info</h3>
-  <img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/siteImages/AppInfo.jpeg?raw=true" object-fit="contain" alt="app-info-screenshot">
+  <img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/n_site_images/Appinfo.jpeg?raw=true" object-fit="contain" alt="app-info-screenshot">
 
 <h3>Bio</h3>
-<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/siteImages/Bio-OurStory.jpeg?raw=true" object-fit="contain" alt="dance-school-bio-screenshot">
+<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/n_site_images/Bio-OurStory.jpeg?raw=true" object-fit="contain" alt="dance-school-bio-screenshot">
 
 <h3>Login</h3>
-<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/siteImages/Login.jpeg?raw=true" object-fit="contain" alt="login-screenshot">
+<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/n_site_images/Login.jpeg?raw=true" object-fit="contain" alt="login-screenshot">
 
 <h3>Dashboard</h3>
-<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/siteImages/dashboard.jpeg?raw=true" object-fit="contain" alt="dashboard-screenshot">
+<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/n_site_images/dashboard.jpeg?raw=true" object-fit="contain" alt="dashboard-screenshot">
 
 <h3>Offered Courses</h3>
-<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/siteImages/OfferedCourses.jpeg?raw=true" object-fit="contain" alt="offered-courses-screenshot">
+<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/n_site_images/OfferedCourses.jpeg?raw=true" object-fit="contain" alt="offered-courses-screenshot">
 
 <h3>LandingPage</h3>
 <p>Mobile</p>
-<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/siteImages/mobile/landingM.jpeg?raw=true" object-fit="contain" alt="app-landingPage-mobile-screenshot">
+<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/n_site_images/mobile/landingM.jpeg?raw=true" object-fit="contain" alt="app-landingPage-mobile-screenshot">
 
 <h3>App Info</h3>
 <p>Mobile</p>
-<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/siteImages/mobile/appInfoM.jpeg?raw=true" object-fit="contain" alt="app-info-mobile-screenshot">
+<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/n_site_images/mobile/appInfoM.jpeg?raw=true" object-fit="contain" alt="app-info-mobile-screenshot">
 
 <h3>Single Course View</h3>
 <p>Mobile</p>
-<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/siteImages/mobile/SingleCourseM.jpeg?raw=true" object-fit="contain" alt="single-course-info-mobile-screenshot">
+<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/n_site_images/mobile/singleCourseM.jpeg?raw=true" object-fit="contain" alt="single-course-info-mobile-screenshot">
 
 <h3>Login</h3>
 <p>Mobile</p>
-<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/siteImages/mobile/loginM.jpeg?raw=true" object-fit="contain" alt="app-login-mobile-screenshot">
-
-<h3>Menu Logged Out</h3>
-<p>Mobile</p>
-<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/siteImages/mobile/navMenuLoggedOut.jpeg?raw=true" object-fit="contain" alt="nav-menu-logged-out-mobile-screenshot">
+<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/n_site_images/mobile/loginM.jpeg?raw=true" object-fit="contain" alt="app-login-mobile-screenshot">
 
 <h3>Menu Logged In</h3>
 <p>Mobile</p>
-<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/siteImages/mobile/navMenuLoggedinM.jpeg?raw=true" object-fit="contain" alt="nav-menu-logged-in-mobile-screenshot">
+<img src="https://github.com/Vlacross/Re-Cap-Client/blob/master/n_site_images/mobile/navMenuLoggedinM.jpeg?raw=true" object-fit="contain" alt="nav-menu-logged-in-mobile-screenshot">
 
 </section>
 
