@@ -1,9 +1,6 @@
 .landingPage {
   color: rgb(255, 255, 255);
-  background: linear-gradient(
-    rgba(255, 255, 255, 0.25),
-    rgba(255, 255, 255, 0.25)
-  );
+  background: rgba(0, 0, 0, 0.75);
   background-size: 100%;
   width: 60%;
   margin: 10px;

@@ -22,7 +22,7 @@ label {
   pointer-events: none;
 } */
 
-.App-header {
+/* .App-header {
   background-color: #326937;
   min-height: 100vh;
   display: flex;
@@ -31,6 +31,23 @@ label {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+} */
+
+.App {
+  text-align: center;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding-top: 75px;
+  background-image: url("./ds-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .App-link {

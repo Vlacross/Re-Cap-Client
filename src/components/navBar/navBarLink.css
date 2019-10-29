@@ -34,14 +34,21 @@
     justify-content: center;
     align-items: center;
     font-size: 2em;
-    background: #1e4d22;
+    background: #000000e6;
   }
 
   .navLink:hover {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.517) inset;
-    background: #386b3d;
+    background: #323131e6;
   }
   
 }
 
+@media only screen and (max-height: 400px) {
+ 
+  .navLink {
+    margin: 10px;
+  }
+  
+}
 
