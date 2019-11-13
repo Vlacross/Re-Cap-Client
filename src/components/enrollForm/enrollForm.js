@@ -2,7 +2,8 @@ import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
 import { connect } from 'react-redux';
 import Input from '../input/input';
-import { authFetch } from '../../actions'
+import { authFetch } from '../../actions';
+import { toggleShowPass } from '../../actions';
 import { required, notEmpty, trimmed, lengthMax, lengthMin, matches, isLower, validEmailFormat } from '../../validators';
 import dashboardRedirect from '../checkAuth/dashboardRedirect';
 
@@ -23,15 +24,22 @@ export class EnrollForm extends React.Component {
       dispatch(authFetch(values))
     };
 
+    showPass(e) {
+      e.preventDefault();
+      this.props.dispatch(toggleShowPass())
+    }
+
 
     render() {
 
       
-      let { error, handleSubmit, pristine, submitting, invalid } = this.props
+      let { error, handleSubmit, pristine, submitting, invalid, view } = this.props
 
     if(error) {
       error = <div className="formError">{this.props.error}</div>
     }
+
+    let passView = view ? 'text' : 'password';
       
       
   return(
@@ -74,7 +82,7 @@ export class EnrollForm extends React.Component {
  
     <Field 
       name="password"
-      type="text"
+      type={passView}
       component={Input}
       label="Password"
       validate={[required, notEmpty, trimmed,  minLength, maxLength, isLower]} 
@@ -82,13 +90,20 @@ export class EnrollForm extends React.Component {
       
     <Field 
       name="passwordCheck"
-      type="text"
+      type={passView}
       component={Input}
       label="Re-enter Password"
       validate={[required, notEmpty, trimmed,  minLength, maxLength, isLower, passMatch]} 
       />
 
-    <div className="formInput">
+    <div className="formInput enroll-controls">
+
+       <button
+        className="passShow loginButton"
+        onClick={(e) => this.showPass(e)}>
+          Show Pass
+      </button>
+
       <button
       className="enrollButton"
         type="submit"
@@ -109,7 +124,8 @@ EnrollForm = connect(
   state => ({
     state: state,
     initialValues: state.auth.user,
-    error: state.auth.error
+    error: state.auth.error,
+    view: state.views.showPass
   }))(EnrollForm);
 
 
