@@ -31,6 +31,19 @@ input {
   background: rgba(255, 255, 255, 0.80)
 }
 
+.input-controls{
+  display: flex;
+  justify-content: space-around;
+}
+
+.autoFill {
+  width: 40%;
+}
+
+.passShow {
+  width: 40%;
+}
+
 .formInput {
   width: 70%;
 }
