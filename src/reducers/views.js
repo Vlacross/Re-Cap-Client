@@ -1,5 +1,5 @@
 /*import actions from actions file */
-import { SET_ISMOBILE, TOGGLE_MENU, SET_DOUBLECHECK, TOGGLE_APP_INFO } from '../actions';
+import { SET_ISMOBILE, TOGGLE_MENU, SET_DOUBLECHECK, TOGGLE_APP_INFO, TOGGLE_SHOWPASS } from '../actions';
 
 
 
@@ -12,8 +12,8 @@ let initialState = {
   doubleCheck: {
     isOpen: false,
     checkingFor: ''
-  }
- 
+  },
+ showPass: false
 };
 
 
@@ -31,6 +31,11 @@ export default function viewsReducer(state = initialState, action) {
   if(action.type === TOGGLE_APP_INFO) {
     return Object.assign({}, state, {
       appInfo: !state.appInfo
+    })
+  }
+  if(action.type === TOGGLE_SHOWPASS) {
+    return Object.assign({}, state, {
+      showPass: !state.showPass
     })
   }
   if(action.type === SET_DOUBLECHECK) {

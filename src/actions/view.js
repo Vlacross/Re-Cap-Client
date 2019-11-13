@@ -21,3 +21,8 @@ export const TOGGLE_APP_INFO = "TOGGLE_APP_INFO";
 export const toggleAppInfo = () => ({
   type: TOGGLE_APP_INFO
 });
+
+export const TOGGLE_SHOWPASS = "TOGGLE_SHOWPASS";
+export const toggleShowPass = () => ({
+  type: TOGGLE_SHOWPASS
+});

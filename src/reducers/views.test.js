@@ -12,7 +12,9 @@ describe('authReducer', () => {
     doubleCheck: {
       isOpen: false,
       checkingFor: ''
-    }};
+    },
+    showPass: false
+  };
 
 
   it('should set the initial state when nothing is passed in', () => {
