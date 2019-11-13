@@ -15,12 +15,15 @@ componentDidUpdate(prevProps) {
 
   render() {
     
-    const { input, type, label, name } = this.props;
+    const { input, type, label, name, login } = this.props;
     
-    let error;
+    let error = <div className="formErrorHolder"></div>;
+
     if (this.props.meta.touched && this.props.meta.error) {
        error = <div className="inputError">{this.props.meta.error}</div>;
     }
+
+    let auto = login ? 'off' : 'none'
   
     
     
@@ -38,6 +41,7 @@ componentDidUpdate(prevProps) {
            id={input.name}
            type={type}
            ref={input => (this.input = input)}
+           autoComplete={auto}
             />
       </div>
     );

@@ -52,7 +52,7 @@ export class EnrollForm extends React.Component {
       name="firstname"
       type="text"
       component={Input}
-      label="Firstname" 
+      label="Firstname"
       validate={[required, notEmpty, trimmed, nameMaxLength, nameMinLength]}
        />
 
