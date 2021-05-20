@@ -1,23 +1,18 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ReactDOM from 'react-dom';
 import Dashboard from './dashboard';
+import { Provider } from 'react-redux';
+import { mockStateStore } from '../../testUtils'
 
 
-const defaultProps = {
-  meta: {
-    touched: null,
-    error: null,
-	},
-	input: {
-		name: 'inputName',
-		type: 'text'
-	}
-};
 
 it('renders without crashing', () => {
 	
-	const wrapper = shallow(<Dashboard {...defaultProps} />)
+	const wrapper = shallow(
+		<Provider store={mockStateStore}>
+			<Dashboard />
+		</Provider>
+	)
 	// console.log(wrapper)
 expect(wrapper).toBeDefined()
 });

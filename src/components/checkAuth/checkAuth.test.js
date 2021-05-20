@@ -1,11 +1,8 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import configureStore from 'redux-mock-store';
-
 import CheckAuth from './checkAuth';
-
-let store;
-
+import { Provider } from 'react-redux';
+import { mockStateStore } from '../../testUtils'
 
 
 
@@ -17,10 +14,13 @@ it('renders based on state', () => {
 		error: false
 	}
 	
-	const Component = () => <h1>Tester</h1>
-	const Hoc = CheckAuth()(Component)
-	const wrapper = shallow(<Hoc props={props} />)
-	// console.log('whipwhap', wrapper.render())
+	const Component = () => (<h1>Tester</h1>)
+	const Hoc = (CheckAuth()(Component))
+	const wrapper = shallow(
+		<Provider store={mockStateStore}>
+			<Hoc props={props}/>
+		</Provider>
+	)
 	expect(wrapper).toBeDefined()
 });
 

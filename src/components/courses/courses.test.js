@@ -1,10 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ReactDOM from 'react-dom';
 import OfferedTypes from './courses';
+import { Provider } from 'react-redux';
+import { mockCourseStore } from '../../testUtils'
+
+let store = mockCourseStore;
 
 it('renders without crashing', () => {
 	
-	const wrapper = shallow(<OfferedTypes />)
+	const wrapper = shallow(
+		<Provider store={store}>
+			<OfferedTypes />
+		</Provider>
+	)
 expect(wrapper).toBeDefined()
 });
