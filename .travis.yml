@@ -3,7 +3,7 @@ node_js: node
 deploy:
   provider: heroku
   api_key:
-    secure: SzXDaiuA1bFmZZoZD2US8Q
+    secure: QLx48U/01//p4+a87thFhxa7QmWo1kXGWZpXzL8ClIhE9BgdD1im2jUAz6fqBpR1hWB7apfKel960umAA6AIJkLe7Lpl9GHpMocKUIGvuzukqfwqkY1mIGcNLzY5G6mzRrnXtMlhT7Xj22fSfGdQHRCcQCFO1c7YhDv7i6me8ht0Q8D2cSwujjE5RKW5S6zfg2ICkGwbG8pAs/Kd/hIWqUO1P77Ny0QETMGrfc/0RwewQVkuhJAL+0St82rP+wHbjGXbVDcXzxV0nJ9X5VFNTEWIX2WK3vI3hS+6pyPK78lY9UlD5B0XhAOajE/6m3QHfKYktPD2GElGxL/bOcHW7YD1qzFK6HmQP9d9eVue6oHw1L/TZpBem/ibEZHodweDbbzvi7aN8ckAtuyuZ/0M/gh73+1y0t3xbuOq4rjjERGtP2kU/FuMC51BgLCOumKMDzdCAf63PkRx2DOpCjcBuuD4zH58Ctv4pkCvI/0EIxlEa9mKvlSzZ5SasuCPSY/LTZj35AuIpfyADMXe/5XDolOFUPCU7JmqnPI/TCwl/mLnWwuMuAhvgIxcU9MepQ2oIzsnnP5P4bLIV/pAqd8SAWKsCRqlIFOb1EGqKYJCtEBcFJY7CJ4sypHSttTZn1zk52JOGYHechBMbkGhv31Xnrq06ZmYqIy1RYfeFqU2PZk=
   app: learn-to-dance
   on:
     repo: Vlacross/Re-Cap-Client
